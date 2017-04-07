@@ -164,12 +164,10 @@ class ISOCMD:
         Args:
             age: the age of the isochrone.
         """
-        diff_arr = abs(np.array(self.ages) - age)
-        age_index = np.where(diff_arr == min(diff_arr))[0][0]
-        
         if ((age > max(self.ages)) | (age < min(self.ages))):
-            print('The requested age is outside the range. Try between ' + str(min(self.ages)) + ' and ' + str(max(self.ages)))
-            
+            raise ValueError('The requested age is outside the range. Try between ' \
+                + str(min(self.ages)) + ' and ' + str(max(self.ages)))
+        age_index = np.abs(np.array(self.ages)-age).argmin()
         return age_index
 
         
