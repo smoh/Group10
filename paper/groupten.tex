@@ -1,0 +1,135 @@
+\documentclass[letterpaper]{aastex6}
+
+% to-do list
+% ----------
+% - add items here
+% style notes
+% -----------
+% - This file generates by Makefile; don't be typing ``pdflatex'' or some bullshit.
+% - Line break between sentences to make the git diffs readable.
+% - Use \, as a multiply operator.
+% - Reserve () for function arguments; use [] or {} for outer shit.
+% - Use \sectionname not Section, \figname not Figure, \documentname not Article or Paper or paper.
+
+\include{gitstuff}
+\include{aastexmods}
+
+% packages
+\definecolor{cbblue}{HTML}{3182bd}
+\usepackage{microtype}  % ALWAYS!
+\usepackage{amsmath,amssymb}
+\usepackage{tikz}
+\hypersetup{backref,breaklinks,colorlinks,urlcolor=cbblue,linkcolor=cbblue,citecolor=black}
+\graphicspath{{.}{figures/}}
+
+% define macros for text
+\newcommand{\project}[1]{\textsl{#1}}
+\newcommand{\acronym}[1]{{\small{#1}}}
+\newcommand{\gaia}{\project{Gaia}}
+\newcommand{\rave}{\project{\acronym{RAVE}}}
+\newcommand{\apogee}{\project{\acronym{APOGEE}}}
+\newcommand{\tmass}{\project{\acronym{2MASS}}}
+\newcommand{\documentname}{Article}
+\newcommand{\sectionname}{Section}
+\newcommand{\figname}{Figure}
+\newcommand{\eqname}{Equation}
+\newcommand{\dr}{\acronym{DR1}}
+\newcommand{\tgas}{\acronym{TGAS}}
+\newcommand{\etal}{\textit{et al}.}
+
+\newcommand{\objname}{moving group}
+
+% define macros for math
+\newcommand{\given}{\,|\,}
+\newcommand{\normal}{{\mathcal{N}}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\transp}[1]{{#1}^{\!\mathsf{T}}}
+\newcommand{\inv}[1]{{#1}^{-1}}
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+\newcommand{\vperp}{\bs{v}^\perp}
+\newcommand{\propm}{\bs{\mu}}
+\newcommand{\mat}[1]{\mathbf{#1}}
+\renewcommand{\vec}[1]{\bs{#1}}
+\newcommand{\kms}{\ensuremath{\rm km~s^{-1}}}
+\newcommand{\msun}{{\rm M}_\odot}
+\newcommand{\data}{\mathrm{data}}
+\newcommand{\snr}{[S/N]_\varpi}
+\newcommand{\eye}{\mathbb{I}}
+\newcommand{\absdvtan}{\ensuremath{|\Delta\vec v_\mathrm{t}|}}
+\newcommand{\estimates}{\ensuremath{\{\hat{\varpi_i},\hat{\mu_{\alpha,i}},\hat{\mu_{\delta,i}},\hat{v_{r,i}}\}}}
+
+\newcommand{\todo}[1]{{\color{blue}TODO:#1}}
+
+\begin{document}\sloppy\sloppypar\raggedbottom\frenchspacing % trust me
+
+\title{A New? Nearby Young Moving Group -- Latyshev-2 rediscovered?}
+
+\author{Semyeong Oh\altaffilmark{\pu,\lead} \etal}
+
+% Affiliations
+\newcommand{\pu}{1}
+\newcommand{\lead}{2}
+\newcommand{\ccpp}{3}
+\newcommand{\mpia}{4}
+\newcommand{\cca}{5}
+
+\altaffiltext{\pu}{Department of Astrophysical Sciences,
+                   Princeton University, Princeton, NJ 08544, USA}
+\altaffiltext{\lead}{To whom correspondence should be addressed:
+                     \texttt{semyeong@astro.princeton.edu}}
+\altaffiltext{\ccpp}{Center for Cosmology and Particle Physics,
+                     Department of Physics,
+                     New York University, 4 Washington Place,
+                     New York, NY 10003, USA}
+\altaffiltext{\mpia}{Max-Planck-Institut f\"ur Astronomie,
+                     K\"onigstuhl 17, D-69117 Heidelberg, Germany}
+\altaffiltext{\cca}{Center for Computational Astrophysics, 162 5th Ave, New York, NY 10003, USA}
+
+
+\begin{abstract}
+  We report the discovery of a new, nearby \objname\ composed of XX stars
+  in the \gaia\ DR 1 at Galactic coordinates $(l, b, d) = ()$.
+  Notable members include XXX.
+  The system is discovered as an aggregate of connected co-moving pairs in our recent study.
+  Many of the member stars show signs of youth such as X-ray emission or infrared excess.
+  We obtain low resolution spectra of the candidate members selected using proper motions, and
+  show that the radial velocities for most of the candidates are indeed consistent
+  with sharing the same velocity.
+  The proximity of this \objname\  makes it an interesting place to study (special type of stars),
+  and look for direct imaging planets.
+\end{abstract}
+
+\section{Introduction} % (fold)
+\label{sec:introduction}
+
+% section introduction (end)
+
+\section{Observation}
+\label{sec:observation}
+
+\subsection{Target Selection}
+\label{sub:target_selection}
+
+We re-examined the network of co-moving pairs studied in \citealt{todo} by
+lowering the threshold of the marginalized likelihood ratios to be more inclusive.
+For $\ln{\mathcal{L}_1}/{\mathcal{L}_2}>2$, we find that this group,
+identified as group id 10 in \citealt{todo}, is extended to 45 potential members.
+
+table for targets and observation
+
+\section{Discussion}
+\label{sec:discussion}
+
+Figure~\ref{fig:}
+
+\begin{figure}[htpb]
+  \centering
+  \includegraphics[width=0.7\linewidth]{cmd_gjg.pdf}
+  \caption{Color-magnitude diagram of member stars.
+    For comparison, we show the MIST isochrones of a solar metallicity population \todo{cite mist}.
+    Red markers indicate infrared excess,
+    and markers wrapped in black circles indicate X-ray source (Table~\todo{tablenum}).
+  }
+  \label{fig:cmd_gjg}
+\end{figure}
+\end{document}
