@@ -170,7 +170,7 @@ class ISOCMD:
         age_index = np.abs(np.array(self.ages)-age).argmin()
         return age_index
 
-    def get_age(selc, logage):
+    def get_age(self, logage):
         """
         Return the isochrone at given log(age).
 
