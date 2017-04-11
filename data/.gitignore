@@ -1,4 +1,9 @@
-Malo.tar.gz
-Malo
-MIST_*
-parsec_*
+# ignore everything
+*
+
+# except these files
+!.gitignore
+!*.csv
+!*.txt
+!*.sh
+
