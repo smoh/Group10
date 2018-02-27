@@ -1,4 +1,4 @@
-\documentclass[letterpaper]{aastex61}
+\documentclass[modern,letterpaper]{aastex61}
 
 % to-do list
 % ----------
@@ -16,8 +16,9 @@
 \usepackage{microtype}  % ALWAYS!
 \usepackage{amsmath,amssymb}
 \usepackage{tikz}
+\usepackage{aas_macros}
 \hypersetup{backref,breaklinks,colorlinks,urlcolor=cbblue,linkcolor=cbblue,citecolor=black}
-\graphicspath{{.}{figures/}}
+\graphicspath{{.}{figures/}{../notebooks/plots/}}
 
 % define macros for text
 \newcommand{\project}[1]{\textsl{#1}}
@@ -35,6 +36,8 @@
 \newcommand{\etal}{\textit{et al}.}
 
 \newcommand{\objname}{moving group}
+\newcommand{\groupTen}{Group 10}
+\newcommand{\groupSixteen}{Group 16}
 
 % define macros for math
 \newcommand{\given}{\,|\,}
@@ -61,31 +64,31 @@
 
 \title{A New? Nearby Young Moving Group -- Latyshev-2 rediscovered?}
 
-\author{Semyeong Oh\altaffilmark{\pu,\lead} \etal}
+\author{Semyeong Oh \etal}
 
 % Affiliations
-\newcommand{\pu}{1}
-\newcommand{\lead}{2}
-\newcommand{\ccpp}{3}
-\newcommand{\mpia}{4}
-\newcommand{\cca}{5}
+% \newcommand{\pu}{1}
+% \newcommand{\lead}{2}
+% \newcommand{\ccpp}{3}
+% \newcommand{\mpia}{4}
+% \newcommand{\cca}{5}
 
-\altaffiltext{\pu}{Department of Astrophysical Sciences,
-                   Princeton University, Princeton, NJ 08544, USA}
-\altaffiltext{\lead}{To whom correspondence should be addressed:
-                     \texttt{semyeong@astro.princeton.edu}}
-\altaffiltext{\ccpp}{Center for Cosmology and Particle Physics,
-                     Department of Physics,
-                     New York University, 4 Washington Place,
-                     New York, NY 10003, USA}
-\altaffiltext{\mpia}{Max-Planck-Institut f\"ur Astronomie,
-                     K\"onigstuhl 17, D-69117 Heidelberg, Germany}
-\altaffiltext{\cca}{Center for Computational Astrophysics, 162 5th Ave, New York, NY 10003, USA}
+% \altaffiltext{\pu}{Department of Astrophysical Sciences,
+%                    Princeton University, Princeton, NJ 08544, USA}
+% \altaffiltext{\lead}{To whom correspondence should be addressed:
+%                      \texttt{semyeong@astro.princeton.edu}}
+% \altaffiltext{\ccpp}{Center for Cosmology and Particle Physics,
+%                      Department of Physics,
+%                      New York University, 4 Washington Place,
+%                      New York, NY 10003, USA}
+% \altaffiltext{\mpia}{Max-Planck-Institut f\"ur Astronomie,
+%                      K\"onigstuhl 17, D-69117 Heidelberg, Germany}
+% \altaffiltext{\cca}{Center for Computational Astrophysics, 162 5th Ave, New York, NY 10003, USA}
 
 
 \begin{abstract}
-  We report the discovery of a new, nearby \objname\ composed of XX stars
-  in the \gaia\ DR 1 at Galactic coordinates $(l, b, d) = ()$.
+  We characterize two nearby moving groups, \groupTen\ and \groupSixteen,
+  using \gaia\ DR 1, data from the literature, and Keck HIRES spectra.
   Notable members include XXX.
   The system is discovered as an aggregate of connected co-moving pairs in our recent study.
   Many of the member stars show signs of youth such as X-ray emission or infrared excess.
@@ -99,6 +102,38 @@
 \section{Introduction} % (fold)
 \label{sec:introduction}
 
+Stars form in group, and remain coherent in their kinematics for a period of
+time that, most importantly, depends on the mass of the initial mass of the
+molecular clouds. Thus, looking for comoving groups of stars is an efficient
+way to find moving groups of presumably single stellar population.
+
+Simple stellar populations are useful for many things. Based on the assumption
+that a group of stars have the same age, many of the stellar parameters can be
+more precisely inferred. Particularly, stellar ages, which are important yet
+challenging to constrain for a single star, can be pinned down to
+\todo{$approx 10$\%} precision.
+
+Young, hot stars are primary targets for discovering planets and brown dwarfs
+with direct imaging.
+
+Here, we report extended analysis and spectroscopic characterization of two
+nearby moving groups.
+
+\subsection{Previous identifications}
+\label{subsec:history}
+
+Moving group identifications are often scattered throughout the literature.
+From a (non-exhaustive) bibliography review of all \tgas\ sources associated
+with \groupTen\ and \groupSixteen\ using Simbad database, we note previous
+identifications of these groups in the literature.
+
+Some A-type stars that were selected in \citet{2017AJ....153..257O} as potential
+members of \groupTen, 84 Uma, 81 Uma, XXX, were previously suggested by
+Latyshev77
+
+
+
+
 % section introduction (end)
 
 \section{Observation}
@@ -107,27 +142,101 @@
 \subsection{Target Selection}
 \label{sub:target_selection}
 
-We re-examined the network of co-moving pairs studied in \citealt{todo} by
+We re-examined the network of co-moving pairs studied in \citealt{2017AJ....153..257O} by
 lowering the threshold of the marginalized likelihood ratios to be more inclusive.
 For $\ln{\mathcal{L}_1}/{\mathcal{L}_2}>2$, we find that this group,
-identified as group id 10 in \citealt{todo}, is extended to 45 potential members.
+identified as group id 10 in \citealt{2017AJ....153..257O}, is extended to 45 potential members.
 
 table for targets and observation
+
+\section{Searching lower main sequence in GPS1}
+\label{sec:searching_lower_main_sequence_in_gps1}
+
+% \begin{figure}[htpb]
+%   \centering
+%   \includegraphics[width=0.8\linewidth]{g0_pm.pdf}
+%   \caption{
+%     Group 0 (the Pleiades; black circles) stars in proper-motion space. The
+%     stars are well-separated from the distribution of the background stars
+%     within the same patch of the sky. The Blue box indicates the proper motion
+%     cuts applied to select stars from GPS1 catalog.
+%   }
+%   \label{fig:g0_pm}
+% \end{figure}
+
+% \begin{figure}[htpb]
+%   \centering
+%   \includegraphics[width=0.95\linewidth]{g0_gps1.pdf}
+%   \caption{
+%     Potential members of the Pleiades selected from GPS1. These are 2095 stars
+%     that are within 15 degrees from the center (median RA, Dec) and have proper
+%     motions within the cuts indicated in Figure 1 . The line in each panel is
+%     the isochrone from MIST model. In the top left panel, the purple shade for
+%     the (pre-)main sequence shows the span from using the minimum and the
+%     maximum parallax values. In order to shift the model magnitudes to observed
+%     magnitudes, a point-estimate distance of 1/(median parallax) is used.
+%   }
+%   \label{fig:g0_gps1}
+% \end{figure}
+
+We first find the lower main-sequence stars of the Pleiades (Group 0) using the
+GPS1 data. The Pleiades is chosen as it is clearly very separated in
+proper-motion space alone (Figure 1). We apply a simple cut in proper motions
+to be within the minimum and maximum values of the TGAS-selected Group 0
+members (indicated with a blue box in Figure 1, and query 15 degrees around the
+center (median RA, Dec) of the group. There are 2095 stars satisfying the cuts
+in the GPS1 catalog. Figure 2 shows their distribution in color-magnitude
+diagrams using Gaia, 2MASS, and PanSTARRS photometry with MIST (\citealt{2016ApJ...823..102C}).
+
+We first find the lower main-sequence stars of the Pleiades (Group 0) using the
+GPS1 data. The Pleiades is chosen as it is clearly very separated in
+proper-motion space alone (Figure~\ref{fig:g0_pm}). We apply a simple cut in
+proper motions to be within the minimum and maximum values of the TGAS-selected
+Group 0 members (indicated with a blue box in Figure~\ref{fig:g0_pm}, and query 15
+degrees around the center (median RA, Dec) of the group. There are 2095 stars
+satisfying the cuts in the GPS1 catalog. Figure~\ref{fig:gps_gps1} shows their
+distribution in color-magnitude diagrams using Gaia, 2MASS, and PanSTARRS
+photometry with the MIST isochrone of solar metallicity and 8.5~Myrs. Although
+there is clearly contamination from background stars with this simple cuts, the
+expected over-density in the low main-sequence is well recovered (and possibly
+a few suspect WDs on the cooling sequence!).
+
+However, there is a noticeable disagreement between the MIST isochrone and the
+data in the red colors in that the model isochrone predict bluer colors than
+observed. This is a known problem due to incomplete spectral library for
+generating stellar spectral energy distributions from physical parameters
+(Choi+2016).
+
+
+We searched the Simbad (\citealt{2000A&AS..143....9W}) database for existing
+radial velocity measurements of the candidate members
+
 
 \section{Discussion}
 \label{sec:discussion}
 
-\input{t1.tex}
+% \input{t1.tex}
 
 
-\begin{figure}[htpb]
-  \centering
-  \includegraphics[width=0.7\linewidth]{cmd_gjg.pdf}
-  \caption{Color-magnitude diagram of member stars.
-    For comparison, we show the MIST isochrones of a solar metallicity population \todo{cite mist}.
-    Red markers indicate infrared excess,
-    and markers wrapped in black circles indicate X-ray source (Table~\todo{tablenum}).
-  }
-  \label{fig:cmd_gjg}
-\end{figure}
+% \begin{figure}[htpb]
+%   \centering
+%   \includegraphics[width=0.7\linewidth]{cmd_gjg.pdf}
+%   \caption{Color-magnitude diagram of member stars.
+%     For comparison, we show the MIST isochrones of a solar metallicity population \todo{cite mist}.
+%     Red markers indicate infrared excess,
+%     and markers wrapped in black circles indicate X-ray source (Table~\todo{tablenum}).
+%   }
+%   \label{fig:cmd_gjg}
+% \end{figure}
+
+\acknowledgements
+% simbad
+This research has made use of the SIMBAD database,
+operated at CDS, Strasbourg, France.
+% ads
+This research has made use of NASA's Astrophysics Data System.
+
+
+\bibliography{refs}
+
 \end{document}
