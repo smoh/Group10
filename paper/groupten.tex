@@ -23,6 +23,7 @@
 % define macros for text
 \newcommand{\project}[1]{\textsl{#1}}
 \newcommand{\acronym}[1]{{\small{#1}}}
+\newcommand{\hipparcos}{Hipparcos}
 \newcommand{\gaia}{\project{Gaia}}
 \newcommand{\rave}{\project{\acronym{RAVE}}}
 \newcommand{\apogee}{\project{\acronym{APOGEE}}}
@@ -42,6 +43,7 @@
 % define macros for math
 \newcommand{\given}{\,|\,}
 \newcommand{\normal}{{\mathcal{N}}}
+\newcommand{\uniform}{{\mathcal{U}}}
 \newcommand{\dd}{\mathrm{d}}
 \newcommand{\transp}[1]{{#1}^{\!\mathsf{T}}}
 \newcommand{\inv}[1]{{#1}^{-1}}
@@ -58,45 +60,47 @@
 \newcommand{\absdvtan}{\ensuremath{|\Delta\vec v_\mathrm{t}|}}
 \newcommand{\estimates}{\ensuremath{\{\hat{\varpi_i},\hat{\mu_{\alpha,i}},\hat{\mu_{\delta,i}},\hat{v_{r,i}}\}}}
 
-\newcommand{\todo}[1]{{\color{blue}TODO:#1}}
+\definecolor{crimson}{rgb}{0.79, 0.0, 0.09}
+\newcommand{\todo}[1]{{\color{crimson}TODO:#1}}
+
+\newcommand{\groupDistanceEstimate}{\ensuremath{100~\mathrm{pc}}}
+\newcommand{\groupAgeEstimate}{\ensuremath{500~\mathrm{Myr}}}
+\newcommand{\totalNumberOfCandidates}{\ensuremath{29}}
+\newcommand{\meanVelocityOpt}{\ensuremath{(u_x,\,u_y,\,u_z) = (-3.9,\,7.0,\,-3.8)~\kms}}
+\newcommand{\sigVelocityOpt}{\ensuremath{0.42~\kms}}
 
 \begin{document}\sloppy\sloppypar\raggedbottom\frenchspacing % trust me
 
-\title{A New? Nearby Young Moving Group -- Latyshev-2 rediscovered?}
+\title{
+  Rediscovery of a nearby young moving group
+}
 
-\author{Semyeong Oh \etal}
+\author[0000-0001-7790-5308]{Semyeong Oh \etal}
+\affiliation{Department of Astrophysical Sciences,
+              Princeton University, Princeton, NJ 08544, USA}
 
-% Affiliations
-% \newcommand{\pu}{1}
-% \newcommand{\lead}{2}
-% \newcommand{\ccpp}{3}
-% \newcommand{\mpia}{4}
-% \newcommand{\cca}{5}
-
-% \altaffiltext{\pu}{Department of Astrophysical Sciences,
-%                    Princeton University, Princeton, NJ 08544, USA}
-% \altaffiltext{\lead}{To whom correspondence should be addressed:
-%                      \texttt{semyeong@astro.princeton.edu}}
-% \altaffiltext{\ccpp}{Center for Cosmology and Particle Physics,
-%                      Department of Physics,
-%                      New York University, 4 Washington Place,
-%                      New York, NY 10003, USA}
-% \altaffiltext{\mpia}{Max-Planck-Institut f\"ur Astronomie,
-%                      K\"onigstuhl 17, D-69117 Heidelberg, Germany}
-% \altaffiltext{\cca}{Center for Computational Astrophysics, 162 5th Ave, New York, NY 10003, USA}
-
+\correspondingauthor{Semyeong Oh}
+\email{semyeong@astro.princeton.edu}
 
 \begin{abstract}
-  We characterize two nearby moving groups, \groupTen\ and \groupSixteen,
-  using \gaia\ DR 1, data from the literature, and Keck HIRES spectra.
-  Notable members include XXX.
-  The system is discovered as an aggregate of connected co-moving pairs in our recent study.
-  Many of the member stars show signs of youth such as X-ray emission or infrared excess.
-  We obtain low resolution spectra of the candidate members selected using proper motions, and
-  show that the radial velocities for most of the candidates are indeed consistent
-  with sharing the same velocity.
-  The proximity of this \objname\  makes it an interesting place to study (special type of stars),
-  and look for direct imaging planets.
+
+  We characterize a nearby (\todo{$d \approx \groupDistanceEstimate$}),
+  young (\todo{age $\approx \groupAgeEstimate$}) moving group using \gaia\ DR 1
+  astrometry and photometric and spectroscopic data from the literature.
+  This group, which notably includes \todo{81 Uma},
+  partially overlaps with the putative new open cluster composed of
+  seven A-type stars by \citet{1977ATsir.969....7L} but its status
+  was dubious due to ...
+  Here, we show that three of these stars are part of a larger comoving group
+  that have \totalNumberOfCandidates\ candidate members.
+  We model the proper motions of the candidate members with a simple
+  isotropic Gaussian velocity distribution, and find that
+  the velocity dispersion is very small (\todo{X}) verifying
+  that they are comoving.
+  Because the group spans a large area on sky, the astrometric radial velocities
+  of individual stars based on the model is determined with \todo{this precision}.
+  We discuss ....
+
 \end{abstract}
 
 \section{Introduction} % (fold)
@@ -119,20 +123,64 @@ with direct imaging.
 Here, we report extended analysis and spectroscopic characterization of two
 nearby moving groups.
 
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.95\linewidth]{figures/g10_3panels.pdf}
+  \caption{\label{fig:g10_3panels}
+    Distribution of 29 stars in \groupTen\ on sky (a),
+    proper-motion space (b), and color-magnitude space (c).
+    In panel (a), the lines connecting pairs of stars show the comoving pairs
+    that constitute this group (connected component) from
+    \citet{2017AJ....153..257O}.
+    In panel (b), the ellipses show the $2\sigma$ covariances of the \tgas\
+    data.
+    In panel (c), MIST isochrones of solar-metallicity for ages of 100~Myr,
+    500~Myr, and 1~Gyr are plotted.
+  }
+\end{figure}
+
+
 \subsection{Previous identifications}
 \label{subsec:history}
 
-Moving group identifications are often scattered throughout the literature.
-From a (non-exhaustive) bibliography review of all \tgas\ sources associated
-with \groupTen\ and \groupSixteen\ using Simbad database, we note previous
-identifications of these groups in the literature.
+Moving group identifications are often scattered throughout the literature. We
+reviewed a (non-exhaustive) bibliography associated with all \tgas\ sources in
+\groupTen\ and \groupSixteen\ from our previous selection
+\citep{2017AJ....153..257O} using the Simbad database, and note previous
+identifications of these groups.
 
 Some A-type stars that were selected in \citet{2017AJ....153..257O} as potential
-members of \groupTen, 84 Uma, 81 Uma, XXX, were previously suggested by
-Latyshev77
+members of \groupTen,
+HIP 66198 (81 Uma), HIP 67231 (84 Uma), and HIP 67005, are part of an open cluster
+suggested by \citet{1977ATsir.969....7L} and dubbed Latyshev 2 by Archinal \& Hynes.
+The reality of the putative cluster, composed of 7 A-type stars
+HIP 66198,
+HIP 67231,
+HIP 67005,
+HIP 67848,
+HIP 66738,
+TYC 3851-606-1,
+TYC 3469-497-1,
+was dismissed in a recent review by \citet{2016IAUS..314...21M}.
+However, here we report that there indeed is a comoving group containing
+some of the stars in Latyshev 2, and that we have identified the lower-MS stars
+in \tgas, demonstrating its physical reality more convincingly.
+We found that two of the \hipparcos\ stars in Latyshev 2,
+HIP 67848 (86 Uma) and HIP 66738 (83 Uma),
+were missing in the \tgas\ catalog which was the parent sample of our previous search while
+their proper motions have been determined by \hipparcos.
+Motivated by this, we looked for any bright members of both groups that we
+may have missed using \hipparcos\ stars that are not present in \tgas\ (\todo{see section X}).
 
-
-
+\groupSixteen\ was recently independently discovered by \citet{2016A&A...595A..22R}
+using \todo{some details of the data}.
+Their `RSG2' conatins 23 stars but the details of the member stars
+are not provided except that it includes 19 Lyn A/B.
+Given that the group is nearby with high proper motions, the members
+that we have identified are presumably not very different from \citet{2016A&A...595A..22R}.
+Here, we examine the group in more detail, particularly using
+Keck HIRES spectra.
 
 % section introduction (end)
 
@@ -148,6 +196,9 @@ For $\ln{\mathcal{L}_1}/{\mathcal{L}_2}>2$, we find that this group,
 identified as group id 10 in \citealt{2017AJ....153..257O}, is extended to 45 potential members.
 
 table for targets and observation
+
+
+
 
 \section{Searching lower main sequence in GPS1}
 \label{sec:searching_lower_main_sequence_in_gps1}
@@ -210,6 +261,93 @@ generating stellar spectral energy distributions from physical parameters
 
 We searched the Simbad (\citealt{2000A&AS..143....9W}) database for existing
 radial velocity measurements of the candidate members
+
+\section{Modelling as a group}
+
+Although the original selection was done by selecting comoving pairs, we can
+also model the proper motions of stars in a group (connected component) as drawn
+from a single mean velocity with a small dispersion.
+\todo{rephrase:
+This is essentially the moving cluster method or convergent point method,
+but instead of taking procedural steps to confirm or find the existence of a
+convergent point, we wish to take forward modelling approach with a probabilistic basis.}
+\todo{CITE: Lindegren etc.}
+
+The components of the model are:
+\begin{itemize}
+  \item We assume that the velocity $\vec{v}_i$ of the star $i$ is drawn from
+    a single Gaussian component with mean (group) velocity $\vec{u}$ and
+    an isotropic dispersion $\sigma_{u}$:
+    $$\vec{v}_i \sim \normal(\vec{u},\,\sigma_{u}).$$
+    Then, the proper motion of star $i$ is $\mat{M}_i(\alpha_i,\,\delta_i)\vec{v}_i$ where
+    $\mat{M}_i$ is the rotation matrix that transforms the equatorial rectangular coordinates
+    to the tangential coordinates at the location $(\mathrm{R.A.},\,\mathrm{Decl.}) = (\alpha_i,\,\delta_i)$.
+
+  \item We assume that the noise model for the \gaia\ data is Gaussian, and
+    the covariance matrix $C_i$ is given and fixed:
+    $$(\tilde\varpi_i,\,\tilde\mu_{\alpha,i}^*,\,\tilde\mu_{\delta,i}) \sim
+      \normal((\varpi_i,\,\mu_{\alpha,i}^*,\,\mu_{\delta,i}),\,C_i)$$
+
+  \item \emph{Priors}: We assume a constant density prior ($p(r) \propto r^2$) and a Gaussian
+    prior with 30~\kms\ dispersion for the mean velocity of the group.
+    For the dispersion $\sigma_u$, we assume a uniform prior in $[0,\,50)$.
+\end{itemize}
+
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\linewidth]{quiver_pm.pdf}
+  \caption{Proper-motion vectors (left) and residual proper motion vectors (right)
+    for 29 stars in \groupTen\ on sky.
+    The residuals are from subtracting the projected mean velocity (\todo{see section X}).
+    The length scale in each panel marked in the upper left corner.
+  }
+  \label{fig:quiver_pm}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\linewidth]{isotropic_single_mc.pdf}
+  \caption{
+    Posterior distribution of the mean velocity $\vec{u} = (u_x,\,u_y,\,u_z)$ and
+    isotropic dispersion $\sigma_u$.
+    Note priors.
+  }
+  \label{}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\linewidth]{rv_ra_id.pdf}
+  \caption{
+    Comparing astrometric radial velocities (blue patches) to
+    measurements available from the literature (black circles).
+    The stars are spread along their R.A. in the vertical direction.
+    The blue patches for each star shows the posterior distribution
+    of the star's radial velocity predicted from the proper motions of
+    all stars in the group.
+    All available measurements removing duplicated exact values from
+    the literature are shown.
+    In general, the the predicted astrometric RVs match one or more
+    available measurements for a star.
+  }
+  \label{fig:rv_ra_id}
+\end{figure}
+
+We first do an optimization using L-BFGS algorithm starting from the
+initial values $d_{i,0} = 1/{\tilde \varpi_0}$, a random mean velocity $\vec{u}_0$
+drawn from the prior distribution, and $\sigma_u=10$~\kms.
+We find that the optimized mean velocity is \meanVelocityOpt\ and the dispersion \sigVelocityOpt.
+We then sample the posterior distribution of $d_i$, $\vec{u}$ and $\sigma_u$ starting
+from this optimum.
+
+
+Because this group spans a large area on sky,
+the geometric constraint on the radial velocities of the stars is interesting.
+\todo{Figure:radial velocities}
+We compare this to a compilation of radial velcoity measurements from the literature.
+We searched the Simbad database ...
+
 
 
 \section{Discussion}
