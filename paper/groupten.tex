@@ -61,7 +61,7 @@
 \newcommand{\estimates}{\ensuremath{\{\hat{\varpi_i},\hat{\mu_{\alpha,i}},\hat{\mu_{\delta,i}},\hat{v_{r,i}}\}}}
 
 \definecolor{crimson}{rgb}{0.79, 0.0, 0.09}
-\newcommand{\todo}[1]{{\color{crimson}TODO:#1}}
+\newcommand{\todo}[1]{{\color{crimson}#1}}
 
 \newcommand{\groupDistanceEstimate}{\ensuremath{100~\mathrm{pc}}}
 \newcommand{\groupAgeEstimate}{\ensuremath{500~\mathrm{Myr}}}
@@ -190,8 +190,8 @@ table for targets and observation
 
 
 
-\section{Searching lower main sequence in GPS1}
-\label{sec:searching_lower_main_sequence_in_gps1}
+% \section{Searching lower main sequence in GPS1}
+% \label{sec:searching_lower_main_sequence_in_gps1}
 
 % \begin{figure}[htpb]
 %   \centering
@@ -220,37 +220,37 @@ table for targets and observation
 %   \label{fig:g0_gps1}
 % \end{figure}
 
-We first find the lower main-sequence stars of the Pleiades (Group 0) using the
-GPS1 data. The Pleiades is chosen as it is clearly very separated in
-proper-motion space alone (Figure 1). We apply a simple cut in proper motions
-to be within the minimum and maximum values of the TGAS-selected Group 0
-members (indicated with a blue box in Figure 1, and query 15 degrees around the
-center (median RA, Dec) of the group. There are 2095 stars satisfying the cuts
-in the GPS1 catalog. Figure 2 shows their distribution in color-magnitude
-diagrams using Gaia, 2MASS, and PanSTARRS photometry with MIST (\citealt{2016ApJ...823..102C}).
+% We first find the lower main-sequence stars of the Pleiades (Group 0) using the
+% GPS1 data. The Pleiades is chosen as it is clearly very separated in
+% proper-motion space alone (Figure 1). We apply a simple cut in proper motions
+% to be within the minimum and maximum values of the TGAS-selected Group 0
+% members (indicated with a blue box in Figure 1, and query 15 degrees around the
+% center (median RA, Dec) of the group. There are 2095 stars satisfying the cuts
+% in the GPS1 catalog. Figure 2 shows their distribution in color-magnitude
+% diagrams using Gaia, 2MASS, and PanSTARRS photometry with MIST (\citealt{2016ApJ...823..102C}).
 
-We first find the lower main-sequence stars of the Pleiades (Group 0) using the
-GPS1 data. The Pleiades is chosen as it is clearly very separated in
-proper-motion space alone (Figure~\ref{fig:g0_pm}). We apply a simple cut in
-proper motions to be within the minimum and maximum values of the TGAS-selected
-Group 0 members (indicated with a blue box in Figure~\ref{fig:g0_pm}, and query 15
-degrees around the center (median RA, Dec) of the group. There are 2095 stars
-satisfying the cuts in the GPS1 catalog. Figure~\ref{fig:gps_gps1} shows their
-distribution in color-magnitude diagrams using Gaia, 2MASS, and PanSTARRS
-photometry with the MIST isochrone of solar metallicity and 8.5~Myrs. Although
-there is clearly contamination from background stars with this simple cuts, the
-expected over-density in the low main-sequence is well recovered (and possibly
-a few suspect WDs on the cooling sequence!).
+% We first find the lower main-sequence stars of the Pleiades (Group 0) using the
+% GPS1 data. The Pleiades is chosen as it is clearly very separated in
+% proper-motion space alone (Figure~\ref{fig:g0_pm}). We apply a simple cut in
+% proper motions to be within the minimum and maximum values of the TGAS-selected
+% Group 0 members (indicated with a blue box in Figure~\ref{fig:g0_pm}, and query 15
+% degrees around the center (median RA, Dec) of the group. There are 2095 stars
+% satisfying the cuts in the GPS1 catalog. Figure~\ref{fig:gps_gps1} shows their
+% distribution in color-magnitude diagrams using Gaia, 2MASS, and PanSTARRS
+% photometry with the MIST isochrone of solar metallicity and 8.5~Myrs. Although
+% there is clearly contamination from background stars with this simple cuts, the
+% expected over-density in the low main-sequence is well recovered (and possibly
+% a few suspect WDs on the cooling sequence!).
 
-However, there is a noticeable disagreement between the MIST isochrone and the
-data in the red colors in that the model isochrone predict bluer colors than
-observed. This is a known problem due to incomplete spectral library for
-generating stellar spectral energy distributions from physical parameters
-(Choi+2016).
+% However, there is a noticeable disagreement between the MIST isochrone and the
+% data in the red colors in that the model isochrone predict bluer colors than
+% observed. This is a known problem due to incomplete spectral library for
+% generating stellar spectral energy distributions from physical parameters
+% (Choi+2016).
 
 
-We searched the Simbad (\citealt{2000A&AS..143....9W}) database for existing
-radial velocity measurements of the candidate members
+% We searched the Simbad (\citealt{2000A&AS..143....9W}) database for existing
+% radial velocity measurements of the candidate members
 
 \section{Modelling as a group}
 
@@ -271,6 +271,10 @@ The components of the model are:
     $$\vec{v}_i \sim \normal(\vec{u},\,\sigma_{u}).$$
     Then, the proper motion of star $i$ is $\mat{M}_i(\alpha_i,\,\delta_i)\vec{v}_i$ where
     $\mat{M}_i$ is the rotation matrix that transforms the equatorial rectangular coordinates
+    \footnote{The choice of this coordinate system is arbitrary. Many of the studies on
+      moving grouops in the Solar neighborhood choose the Galactic coordinates which additionally
+      depends on $(\alpha_\mathrm{GC},\,\delta_\mathrm{GC})$.
+    }
     to the tangential coordinates at the location $(\mathrm{R.A.},\,\mathrm{Decl.}) = (\alpha_i,\,\delta_i)$.
 
   \item We assume that the noise model for the \gaia\ data is Gaussian, and
@@ -303,7 +307,7 @@ The components of the model are:
     isotropic dispersion $\sigma_u$.
     Note priors.
   }
-  \label{}
+  \label{fig:fit}
 \end{figure}
 
 \begin{figure}
@@ -330,6 +334,8 @@ drawn from the prior distribution, and $\sigma_u=10$~\kms.
 We find that the optimized mean velocity is \meanVelocityOpt\ and the dispersion \sigVelocityOpt.
 We then sample the posterior distribution of $d_i$, $\vec{u}$ and $\sigma_u$ starting
 from this optimum.
+\figname~\ref{fig:quiver_pm} and \figname~\ref{fig:fit} summarizes
+the fit result.
 
 
 Because this group spans a large area on sky,
@@ -337,6 +343,8 @@ the geometric constraint on the radial velocities of the stars is interesting.
 \todo{Figure:radial velocities}
 We compare this to a compilation of radial velcoity measurements from the literature.
 We searched the Simbad database ...
+
+
 
 
 
@@ -363,6 +371,8 @@ This research has made use of the SIMBAD database,
 operated at CDS, Strasbourg, France.
 % ads
 This research has made use of NASA's Astrophysics Data System.
+% gaia
+% gaia sprints
 
 
 \bibliography{refs}
