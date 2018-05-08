@@ -60,6 +60,12 @@
 \newcommand{\absdvtan}{\ensuremath{|\Delta\vec v_\mathrm{t}|}}
 \newcommand{\estimates}{\ensuremath{\{\hat{\varpi_i},\hat{\mu_{\alpha,i}},\hat{\mu_{\delta,i}},\hat{v_{r,i}}\}}}
 
+\newcommand{\ra}{\text{R.A.}}
+\newcommand{\dec}{\text{Decl.}}
+\newcommand{\pmra}{\ensuremath{\mu_\alpha^*}}
+\newcommand{\pmdec}{\ensuremath{\mu_\delta}}
+\newcommand{\masyr}{\ensuremath{\mathrm{mas}\,\mathrm{yr}^{-1}}}
+
 \definecolor{crimson}{rgb}{0.79, 0.0, 0.09}
 \newcommand{\todo}[1]{{\color{crimson}#1}}
 
@@ -68,11 +74,12 @@
 \newcommand{\totalNumberOfCandidates}{\ensuremath{29}}
 \newcommand{\meanVelocityOpt}{\ensuremath{(u_x,\,u_y,\,u_z) = (-3.9,\,7.0,\,-3.8)~\kms}}
 \newcommand{\sigVelocityOpt}{\ensuremath{0.42~\kms}}
+\newcommand{\nstarsInRegion}{3413}
 
 \begin{document}\sloppy\sloppypar\raggedbottom\frenchspacing % trust me
 
 \title{
-  Rediscovery of a nearby young moving group
+  A nearby young, coeval moving group
 }
 
 \author[0000-0001-7790-5308]{Semyeong Oh \etal}
@@ -84,9 +91,11 @@
 
 \begin{abstract}
 
-  We characterize a nearby (\todo{$d \approx \groupDistanceEstimate$}),
-  young (\todo{age $\approx \groupAgeEstimate$}) moving group using \gaia\ DR 1
-  astrometry and photometric and spectroscopic data from the literature.
+  We confirm and characterize a nearby (\todo{$d \approx \groupDistanceEstimate$}),
+  young (\todo{age $\approx \groupAgeEstimate$}) moving group discovered
+  using \gaia\ DR 1 astrometry using the updated and extended data from \gaia\ DR 2
+  in combination with other photometric and spectroscopic data from the literature.
+
   This group, which notably includes \todo{81 Uma},
   partially overlaps with the putative new open cluster composed of
   seven A-type stars by \citet{1977ATsir.969....7L} but its status
@@ -106,39 +115,58 @@
 \section{Introduction} % (fold)
 \label{sec:introduction}
 
-Stars form in group, and remain coherent in their kinematics for a period of
-time that, most importantly, depends on the mass of the initial mass of the
-molecular clouds. Thus, looking for comoving groups of stars is an efficient
-way to find moving groups of presumably single stellar population.
-
-Simple stellar populations are useful for many things. Based on the assumption
-that a group of stars have the same age, many of the stellar parameters can be
-more precisely inferred. Particularly, stellar ages, which are important yet
-challenging to constrain for a single star, can be pinned down to
-\todo{$approx 10$\%} precision.
-
-Young, hot stars are primary targets for discovering planets and brown dwarfs
-with direct imaging.
-
-Here, we report extended analysis and spectroscopic characterization of two
-nearby moving groups.
+Comoving, coeval stars in the Solar neighborhood are valuable for many different
+fields of astrophysics.
+For stellar physics, they are important calibrator objects.
 
 
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=0.95\linewidth]{figures/g10_3panels.pdf}
-  \caption{\label{fig:g10_3panels}
-    Distribution of 29 stars in \groupTen\ on sky (a),
-    proper-motion space (b), and color-magnitude space (c).
-    In panel (a), the lines connecting pairs of stars show the comoving pairs
-    that constitute this group (connected component) from
-    \citet{2017AJ....153..257O}.
-    In panel (b), the ellipses show the $2\sigma$ covariances of the \tgas\
-    data.
-    In panel (c), MIST isochrones of solar-metallicity for ages of 100~Myr,
-    500~Myr, and 1~Gyr are plotted.
-  }
-\end{figure}
+We are entreing a new era in charting the kinematic substructure and stellar
+populations in the Solar neighborhood with the recent second data release (DR~2)
+of \gaia\ \citep{2018arXiv180409365G}, which provides parallaxes, proper motions
+and precise two-band photometry of stars brighter than $G=20$~mag as well as
+radial velocities for stars brighter than 12~mag.
+
+
+Previously, we performed a search for comoving pairs using the Tycho-Gaia
+Astrometric Solution (\tgas), a subset of \gaia\ DR~1 which provides astrometric
+measurements for 2~million source in Tycho-2 catalog ($G<12$~mag).
+By looking for comoving pairs blindly, we have naturally recovered
+many of the other larger known comoving stellar groups, ranging from
+loose associations to open clusters.
+However, we have also found some new large and small groups that
+were not previously idendified.
+% TODO: discuss Faherty 2018
+
+Here, we confirm the existence of this \objname\ with \gaia\ DR 2 and
+present an extended analysis of the properties.
+
+
+
+
+% Stars form in group, and remain coherent in their kinematics for a period of
+% time that, most importantly, depends on the mass of the initial mass of the
+% molecular clouds. Thus, looking for comoving groups of stars is an efficient
+% way to find moving groups of presumably single stellar population.
+
+
+
+
+
+% \begin{figure}[ht]
+%   \centering
+%   \includegraphics[width=0.95\linewidth]{figures/g10_3panels.pdf}
+%   \caption{\label{fig:g10_3panels}
+%     Distribution of 29 stars in \groupTen\ on sky (a),
+%     proper-motion space (b), and color-magnitude space (c).
+%     In panel (a), the lines connecting pairs of stars show the comoving pairs
+%     that constitute this group (connected component) from
+%     \citet{2017AJ....153..257O}.
+%     In panel (b), the ellipses show the $2\sigma$ covariances of the \tgas\
+%     data.
+%     In panel (c), MIST isochrones of solar-metallicity for ages of 100~Myr,
+%     500~Myr, and 1~Gyr are plotted.
+%   }
+% \end{figure}
 
 
 \subsection{Previous identifications}
@@ -154,13 +182,13 @@ members of \groupTen,
 HIP 66198 (81 Uma), HIP 67231 (84 Uma), and HIP 67005, are part of an open cluster
 suggested by \citet{1977ATsir.969....7L} and dubbed Latyshev 2 by Archinal \& Hynes.
 The reality of the putative cluster, composed of 7 A-type stars
-HIP 66198,
+(HIP 66198,
 HIP 67231,
 HIP 67005,
 HIP 67848,
 HIP 66738,
 TYC 3851-606-1,
-TYC 3469-497-1,
+TYC 3469-497-1)
 was dismissed in a recent review by \citet{2016IAUS..314...21M}.
 However, here we report that there indeed is a comoving group containing
 some of the stars in Latyshev 2, and that we have identified the lower-MS stars
@@ -174,51 +202,69 @@ may have missed using \hipparcos\ stars that are not present in \tgas\ (\todo{se
 
 % section introduction (end)
 
-\section{Observation}
-\label{sec:observation}
+\section{Data}
+\label{sec:data}
 
-\subsection{Target Selection}
-\label{sub:target_selection}
+\begin{figure}
+  \includegraphics[width=0.95\linewidth]{g10_sky_pm.pdf}
+  \caption{Distribution of stars in the local neighborhood of \groupTen\ on sky and in proper-motion space.}
+  \label{fig:distributions}
+\end{figure}
 
-We re-examined the network of co-moving pairs studied in \citealt{2017AJ....153..257O} by
-lowering the threshold of the marginalized likelihood ratios to be more inclusive.
-For $\ln{\mathcal{L}_1}/{\mathcal{L}_2}>2$, we find that this group,
-identified as group id 10 in \citealt{2017AJ....153..257O}, is extended to 45 potential members.
+We use the astrometric, photometric, and spectroscopic parameters of
+\gaia\ DR~2.
+Based on the angular and parallactic spread of this group from the previous
+discovery using \tgas, we query the same region in \gaia\ DR 2 with generous
+cuts applied in \ra, \dec, and parallax.
+We go out to 20 degrees and 9 degrees from the mean position in \ra\ and \dec\
+respectively, and a nominal 20~pc in distance around the median parallax.
+There are \nstarsInRegion\ sources within these cuts.
+Figure~\ref{fig:distributions} shows the distribution of these sources on sky
+and in proper-motion space, where the black circles are
+the original candidate members from \tgas.
+While there is no discernable concentration of sources on sky,
+a clear overdensity is found in proper-motion space at
+$(\pmra,\,\pmdec)\approx(-16.8,\,-3)~\masyr$.
+Of course, the sources in this overdensity do not have exactly the same proper motion
+due to gemetric projection.
+The span of this overdensity mainly corresponds to the span in parallax
+(\figname~\ref{fig:distributions}c).
+For the same 3D velocity vector, stars that are closer (larger parallaxes) will
+have larger (absolute) proper motions.
 
-table for targets and observation
+In order to select candidate members of the group,
+we have simply selected all stars within the ellipse marked in the lower two
+panels of \figname~\ref{fig:distributions}.
+We expect this selection to be neither complete nor without contamination.
+However, given the clear overdensity in proper-motion space corresponding to
+this group, we expect the contamination to be low.
+%TODO: some quantitative statement..
+We think this selection is sufficient for a first attempt to examine the general
+properties of the group.
+Of 199 sources that fall in the ellipse mask in the proper-motion space,
+there are 33 sources that have radial velocities (RVs) measured.
+We exclude 1 source (Gaia DR2 1613400929985403520)
+from this subset that has precise (standard error of 0.42~\kms) RV but is
+a clear outlier, i.e., contamination.
+% TODO: check coordinates and note assumed GC.
+For the rest of the candidate members with RVs ($N=32$),
+the median and standard deviation of the velocities in the Galactic coordinates
+are $(U,\,V,\,W) = (-3.6,\,-9.1,\,-1.6)~\kms$ and
+$(\sigma_U,\,\sigma_V,\,\sigma_W) = (0.59,\,0.88,\,1.24)~\kms$,
+aptly described as `comoving'.
+We treat these 198 sources as candidate members for the following analysis.
 
 
 
+\begin{figure}
+  \includegraphics[width=0.95\linewidth]{galactic_xyz.pdf}
+  \caption{Distribution of candidate members in \groupTen\ in
+    the Galactic coordinates.}
+  \label{fig:galactic_xyz}
+\end{figure}
 
-% \section{Searching lower main sequence in GPS1}
-% \label{sec:searching_lower_main_sequence_in_gps1}
 
-% \begin{figure}[htpb]
-%   \centering
-%   \includegraphics[width=0.8\linewidth]{g0_pm.pdf}
-%   \caption{
-%     Group 0 (the Pleiades; black circles) stars in proper-motion space. The
-%     stars are well-separated from the distribution of the background stars
-%     within the same patch of the sky. The Blue box indicates the proper motion
-%     cuts applied to select stars from GPS1 catalog.
-%   }
-%   \label{fig:g0_pm}
-% \end{figure}
 
-% \begin{figure}[htpb]
-%   \centering
-%   \includegraphics[width=0.95\linewidth]{g0_gps1.pdf}
-%   \caption{
-%     Potential members of the Pleiades selected from GPS1. These are 2095 stars
-%     that are within 15 degrees from the center (median RA, Dec) and have proper
-%     motions within the cuts indicated in Figure 1 . The line in each panel is
-%     the isochrone from MIST model. In the top left panel, the purple shade for
-%     the (pre-)main sequence shows the span from using the minimum and the
-%     maximum parallax values. In order to shift the model magnitudes to observed
-%     magnitudes, a point-estimate distance of 1/(median parallax) is used.
-%   }
-%   \label{fig:g0_gps1}
-% \end{figure}
 
 % We first find the lower main-sequence stars of the Pleiades (Group 0) using the
 % GPS1 data. The Pleiades is chosen as it is clearly very separated in
@@ -344,8 +390,13 @@ the geometric constraint on the radial velocities of the stars is interesting.
 We compare this to a compilation of radial velcoity measurements from the literature.
 We searched the Simbad database ...
 
+\section{Known and probable companions to candidate members}
+
+\section{Color-magnitude diagrams and isochrone ages}
 
 
+- little or no dust reddening due to high galactic latitutde
+- astrometric noise
 
 
 \section{Discussion}
@@ -364,6 +415,12 @@ We searched the Simbad database ...
 %   }
 %   \label{fig:cmd_gjg}
 % \end{figure}
+
+
+\appendix
+
+\section{Queries to the Gaia Archive}
+
 
 \acknowledgements
 % simbad
