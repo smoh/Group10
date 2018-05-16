@@ -28,6 +28,8 @@
 \newcommand{\rave}{\project{\acronym{RAVE}}}
 \newcommand{\apogee}{\project{\acronym{APOGEE}}}
 \newcommand{\tmass}{\project{\acronym{2MASS}}}
+\newcommand{\allwise}{\project{\acronym{allWISE}}}
+\newcommand{\panstarrs}{\project{\acronym{PanSTARRS}}}
 \newcommand{\documentname}{Article}
 \newcommand{\sectionname}{Section}
 \newcommand{\figname}{Figure}
@@ -92,16 +94,11 @@
 \begin{abstract}
 
   We confirm and characterize a nearby (\todo{$d \approx \groupDistanceEstimate$}),
-  young (\todo{age $\approx \groupAgeEstimate$}) moving group discovered
-  using \gaia\ DR 1 astrometry using the updated and extended data from \gaia\ DR 2
-  in combination with other photometric and spectroscopic data from the literature.
+  young moving group discovered
+  with \gaia\ DR 1 astrometry using the updated and extended data from \gaia\ DR 2
+  in combination with other data from the literature.
+  This group, which notably includes 81 Uma and 84 Uma,
 
-  This group, which notably includes \todo{81 Uma},
-  partially overlaps with the putative new open cluster composed of
-  seven A-type stars by \citet{1977ATsir.969....7L} but its status
-  was dubious due to ...
-  Here, we show that three of these stars are part of a larger comoving group
-  that have \totalNumberOfCandidates\ candidate members.
   We model the proper motions of the candidate members with a simple
   isotropic Gaussian velocity distribution, and find that
   the velocity dispersion is very small (\todo{X}) verifying
@@ -115,17 +112,26 @@
 \section{Introduction} % (fold)
 \label{sec:introduction}
 
-Comoving, coeval stars in the Solar neighborhood are valuable for many different
-fields of astrophysics.
-For stellar physics, they are important calibrator objects.
+Comoving, coeval stars in the Solar neighborhood are valuable for
+many different fields of astrophysics.
+They are important benchmarks for our understanding of stellar physics
+as well as for calibrating measurements among different mass ranges.
+In the general picture that stars form in groups and remain
+kinematically coherent until they are dissolved into the field population,
+a detailed census of these objects is closely related to the recent star formation history
+in the local volume.
+The statistics of their kinematic properties may inform us about the dispersal
+of kinematic coherence of young stars.
 
+Each star cluster or moving group are also interesting dynamical entities
+as their dynamical evolution is intimately tied to their internal structure and
+external perturbation such as giant molecular clouds.
 
 We are entreing a new era in charting the kinematic substructure and stellar
 populations in the Solar neighborhood with the recent second data release (DR~2)
 of \gaia\ \citep{2018arXiv180409365G}, which provides parallaxes, proper motions
 and precise two-band photometry of stars brighter than $G=20$~mag as well as
 radial velocities for stars brighter than 12~mag.
-
 
 Previously, we performed a search for comoving pairs using the Tycho-Gaia
 Astrometric Solution (\tgas), a subset of \gaia\ DR~1 which provides astrometric
@@ -137,19 +143,10 @@ However, we have also found some new large and small groups that
 were not previously idendified.
 % TODO: discuss Faherty 2018
 
+% TODO: why group 10 stands out
+
 Here, we confirm the existence of this \objname\ with \gaia\ DR 2 and
 present an extended analysis of the properties.
-
-
-
-
-% Stars form in group, and remain coherent in their kinematics for a period of
-% time that, most importantly, depends on the mass of the initial mass of the
-% molecular clouds. Thus, looking for comoving groups of stars is an efficient
-% way to find moving groups of presumably single stellar population.
-
-
-
 
 
 % \begin{figure}[ht]
@@ -191,16 +188,15 @@ TYC 3851-606-1,
 TYC 3469-497-1)
 was dismissed in a recent review by \citet{2016IAUS..314...21M}.
 However, here we report that there indeed is a comoving group containing
-some of the stars in Latyshev 2, and that we have identified the lower-MS stars
-in \tgas, demonstrating its physical reality more convincingly.
+some of the stars in Latyshev 2, and demonstrate
+its physical reality more convincingly.
+%
 We found that two of the \hipparcos\ stars in Latyshev 2,
 HIP 67848 (86 Uma) and HIP 66738 (83 Uma),
 were missing in the \tgas\ catalog which was the parent sample of our previous search while
 their proper motions have been determined by \hipparcos.
 Motivated by this, we looked for any bright members of both groups that we
 may have missed using \hipparcos\ stars that are not present in \tgas\ (\todo{see section X}).
-
-% section introduction (end)
 
 \section{Data}
 \label{sec:data}
@@ -236,8 +232,8 @@ In order to select candidate members of the group,
 we have simply selected all stars within the ellipse marked in the lower two
 panels of \figname~\ref{fig:distributions}.
 We expect this selection to be neither complete nor without contamination.
-However, given the clear overdensity in proper-motion space corresponding to
-this group, we expect the contamination to be low.
+However, given the clear overdensity in proper-motion space within this parallax slice
+of the group, we expect the contamination to be low.
 %TODO: some quantitative statement..
 We think this selection is sufficient for a first attempt to examine the general
 properties of the group.
@@ -255,6 +251,201 @@ aptly described as `comoving'.
 We treat these 198 sources as candidate members for the following analysis.
 
 
+We note that 95\% of the selected candidate members have
+parallax signal-to-noise ratios above 24.
+
+
+
+
+% \section{Modelling as a group}
+%
+% Although the original selection was done by selecting comoving pairs, we can
+% also model the proper motions of stars in a group (connected component) as drawn
+% from a single mean velocity with a small dispersion.
+% \todo{rephrase:
+% This is essentially the moving cluster method or convergent point method,
+% but instead of taking procedural steps to confirm or find the existence of a
+% convergent point, we wish to take forward modelling approach with a probabilistic basis.}
+% \todo{CITE: Lindegren etc.}
+%
+% The components of the model are:
+% \begin{itemize}
+%   \item We assume that the velocity $\vec{v}_i$ of the star $i$ is drawn from
+%     a single Gaussian component with mean (group) velocity $\vec{u}$ and
+%     an isotropic dispersion $\sigma_{u}$:
+%     $$\vec{v}_i \sim \normal(\vec{u},\,\sigma_{u}).$$
+%     Then, the proper motion of star $i$ is $\mat{M}_i(\alpha_i,\,\delta_i)\vec{v}_i$ where
+%     $\mat{M}_i$ is the rotation matrix that transforms the equatorial rectangular coordinates
+%     \footnote{The choice of this coordinate system is arbitrary. Many of the studies on
+%       moving grouops in the Solar neighborhood choose the Galactic coordinates which additionally
+%       depends on $(\alpha_\mathrm{GC},\,\delta_\mathrm{GC})$.
+%     }
+%     to the tangential coordinates at the location $(\mathrm{R.A.},\,\mathrm{Decl.}) = (\alpha_i,\,\delta_i)$.
+%
+%   \item We assume that the noise model for the \gaia\ data is Gaussian, and
+%     the covariance matrix $C_i$ is given and fixed:
+%     $$(\tilde\varpi_i,\,\tilde\mu_{\alpha,i}^*,\,\tilde\mu_{\delta,i}) \sim
+%       \normal((\varpi_i,\,\mu_{\alpha,i}^*,\,\mu_{\delta,i}),\,C_i)$$
+%
+%   \item \emph{Priors}: We assume a constant density prior ($p(r) \propto r^2$) and a Gaussian
+%     prior with 30~\kms\ dispersion for the mean velocity of the group.
+%     For the dispersion $\sigma_u$, we assume a uniform prior in $[0,\,50)$.
+% \end{itemize}
+%
+%
+% \begin{figure}
+%   \centering
+%   \includegraphics[width=0.9\linewidth]{quiver_pm.pdf}
+%   \caption{Proper-motion vectors (left) and residual proper motion vectors (right)
+%     for 29 stars in \groupTen\ on sky.
+%     The residuals are from subtracting the projected mean velocity (\todo{see section X}).
+%     The length scale in each panel marked in the upper left corner.
+%   }
+%   \label{fig:quiver_pm}
+% \end{figure}
+%
+% \begin{figure}
+%   \centering
+%   \includegraphics[width=0.9\linewidth]{isotropic_single_mc.pdf}
+%   \caption{
+%     Posterior distribution of the mean velocity $\vec{u} = (u_x,\,u_y,\,u_z)$ and
+%     isotropic dispersion $\sigma_u$.
+%     Note priors.
+%   }
+%   \label{fig:fit}
+% \end{figure}
+%
+% \begin{figure}
+%   \centering
+%   \includegraphics[width=0.9\linewidth]{rv_ra_id.pdf}
+%   \caption{
+%     Comparing astrometric radial velocities (blue patches) to
+%     measurements available from the literature (black circles).
+%     The stars are spread along their R.A. in the vertical direction.
+%     The blue patches for each star shows the posterior distribution
+%     of the star's radial velocity predicted from the proper motions of
+%     all stars in the group.
+%     All available measurements removing duplicated exact values from
+%     the literature are shown.
+%     In general, the the predicted astrometric RVs match one or more
+%     available measurements for a star.
+%   }
+%   \label{fig:rv_ra_id}
+% \end{figure}
+%
+% We first do an optimization using L-BFGS algorithm starting from the
+% initial values $d_{i,0} = 1/{\tilde \varpi_0}$, a random mean velocity $\vec{u}_0$
+% drawn from the prior distribution, and $\sigma_u=10$~\kms.
+% We find that the optimized mean velocity is \meanVelocityOpt\ and the dispersion \sigVelocityOpt.
+% We then sample the posterior distribution of $d_i$, $\vec{u}$ and $\sigma_u$ starting
+% from this optimum.
+% \figname~\ref{fig:quiver_pm} and \figname~\ref{fig:fit} summarizes
+% the fit result.
+%
+%
+% Because this group spans a large area on sky,
+% the geometric constraint on the radial velocities of the stars is interesting.
+% \todo{Figure:radial velocities}
+% We compare this to a compilation of radial velcoity measurements from the literature.
+% % We searched the Simbad (\citealt{2000A&AS..143....9W}) database for existing
+% % radial velocity measurements of the candidate members
+%
+
+\section{Analysis}
+
+\subsection{Color-magnitude diagrams and isochrone ages}
+
+\begin{figure}
+  \includegraphics[width=0.95\linewidth]{bp_rp_G.pdf}
+  \caption{
+    Color-magnitude diagrams of candidate \groupTen\ members.
+    Panel (a) and (c-f) show the color-magnitude diagram using \gaia\ (BP, RP and $G$),
+    \tmass\ ($J$), \allwise\ ($W1$), and \panstarrs\ ($r_\mathrm{PS}$ and $i_\mathrm{PS}$)
+    magnitudes. Panel (b) shows the astrometric excess noise from \gaia's astrometric
+    solution vs. BP-RP color. The sources for which the excess noise is a significant
+    outlier to the general trend are colored red.
+    Some of the sources with bad BP, RP photometry are marked by `x'.
+    Many of these seem to be low-mass stars further down the main sequence (d-f).
+  }
+  \label{fig:cmd}
+\end{figure}
+
+\begin{figure}
+  \includegraphics{age_DavidHillenbrand2015.pdf}
+  \caption{Age estimates for five candidate members in \citet{2015ApJ...804..146D}.
+    The black vertical line is the mode of the posterior distribution,
+    and the gray band and line marks 68\% and 95\% confidence interval.
+  }
+  \label{fig:age_DavidHillenbrand2015}
+\end{figure}
+
+Figure~\ref{fig:cmd}a shows the color-magnitude diagrams
+of the candidate group members using \gaia\ photometry.
+The absolute $G$ magnitude $M_G$ is calculated as $G + 5\log(\varpi) -10$ where
+$\varpi$ is parallax in mas.
+The group is at high galactic latitude (median $b=55$~degrees),
+and the extinction is very low.
+We checked the dust maps of \citet{1998ApJ...500..525S} and
+\citet{2017ApJ...846...38L}
+at the location of candidate and found the median reddening to be
+$E(B-V)\lesssim 0.012$~mag although there are some variations across the region with
+the maximum reddening of 0.025~mag.
+We applied no correction for dust in data or isochrone models.
+
+Compared to the distribution of stars in the entire search region (gray circles),
+the candidate members (black circles) resemble a clean single-age population.
+In order to estimate an approximate age of the group,
+we compared the distribution of candidate members in the color-magnitude diagram
+to MIST \citep{2016ApJ...823..102C} (with rotation) and
+PARSEC isochrones \citep[v1.2S;][]{2012MNRAS.427..127B,2015MNRAS.452.1068C}
+of solar metallicity visually,
+and found $\log(\mathrm{age}) \approx 8.4$ (250~Myr).
+We expect that a range of $\log(\mathrm{age}) = (8.2-8.55)$ should encapsulate
+the plausible age of the group judging from the disagreement in lower-main
+sequence for younger ages (with PARSEC models) and
+the main-sequence turn-off for older ages.
+Isochrones of $\log(\mathrm{age}) \approx 8.4$
+from MIST (black) and PARSEC (blue) models are plotted in \figname~\ref{fig:cmd}a
+for comparison.
+The discrepancy between the MIST models and the data for low-mass
+($M\lesssim0.6~m_\odot$) stars is a well-known problem seen in many young open
+clusters and generic in many stellar models, and is attributed to incomplete
+atomic and molecular line opacity data.
+This is remedied in PARSEC models by revising and calibrating the boundary conditions
+to match the observed data in star clusters \citep{2014MNRAS.444.2525C}, leading to
+a better agreement with the data.
+A more careful modelling is required to properly infer the age and metallicity
+of the group.
+
+At the very faint end, the \gaia\ BP-RP colors are may be incorrect due to
+contamination from nearby sources as no deblending was performed for BP and RP
+bands in DR~2 \citep{2018arXiv180409368E}.
+Following \citet{2018arXiv180409378G}, we used emperical cuts to the
+\texttt{phot\_bp\_rp\_excess\_factor} as a function of BP-RP color in order to
+flag these sources which are marked as `x' in all panels of
+Figure~\ref{fig:cmd}.
+In order to illuminate the nature of these sources, we use four other deeper
+survey magnitudes (\tmass\ $J$, \allwise\ $W1$ and \panstarrs\ $r$ and $y$) with
+\gaia\ $G$ band magnitudes.
+%
+Many of these sources seem to be lower-mass stars further down the main-sequence
+with even redder colors.
+
+
+For five \hipparcos\ stars of the candidate members,
+an independent age determination by \citet{2015ApJ...804..146D} exists.
+The stars were treated as field stars and modelled individually.
+We used the cross-match to Tycho-2 provided in the Gaia Archive
+in order to retrieve the \hipparcos\ identifiers.
+Figure~\ref{fig:age_DavidHillenbrand2015} shows the posterior distributions
+of their age estimates.
+Except for one star, HIP 69275, with a notable disagreement with the rest,
+four out of five stars have a consistent most probable age of $202-214$~Myr
+(mode of the posterior distribution) and overlapping posterior distributions.
+This is in good agreement with the visually-determined isochrone age.
+
+
+\subsection{Morphology}
 
 \begin{figure}
   \includegraphics[width=0.95\linewidth]{galactic_xyz.pdf}
@@ -263,144 +454,16 @@ We treat these 198 sources as candidate members for the following analysis.
   \label{fig:galactic_xyz}
 \end{figure}
 
+The distribution of candidate members in galactic coordinates
+(Figure~\ref{fig:galactic_xyz}) show an interesting gap in $X$-$Y$ coordinates.
 
 
 
-% We first find the lower main-sequence stars of the Pleiades (Group 0) using the
-% GPS1 data. The Pleiades is chosen as it is clearly very separated in
-% proper-motion space alone (Figure 1). We apply a simple cut in proper motions
-% to be within the minimum and maximum values of the TGAS-selected Group 0
-% members (indicated with a blue box in Figure 1, and query 15 degrees around the
-% center (median RA, Dec) of the group. There are 2095 stars satisfying the cuts
-% in the GPS1 catalog. Figure 2 shows their distribution in color-magnitude
-% diagrams using Gaia, 2MASS, and PanSTARRS photometry with MIST (\citealt{2016ApJ...823..102C}).
 
-% We first find the lower main-sequence stars of the Pleiades (Group 0) using the
-% GPS1 data. The Pleiades is chosen as it is clearly very separated in
-% proper-motion space alone (Figure~\ref{fig:g0_pm}). We apply a simple cut in
-% proper motions to be within the minimum and maximum values of the TGAS-selected
-% Group 0 members (indicated with a blue box in Figure~\ref{fig:g0_pm}, and query 15
-% degrees around the center (median RA, Dec) of the group. There are 2095 stars
-% satisfying the cuts in the GPS1 catalog. Figure~\ref{fig:gps_gps1} shows their
-% distribution in color-magnitude diagrams using Gaia, 2MASS, and PanSTARRS
-% photometry with the MIST isochrone of solar metallicity and 8.5~Myrs. Although
-% there is clearly contamination from background stars with this simple cuts, the
-% expected over-density in the low main-sequence is well recovered (and possibly
-% a few suspect WDs on the cooling sequence!).
-
-% However, there is a noticeable disagreement between the MIST isochrone and the
-% data in the red colors in that the model isochrone predict bluer colors than
-% observed. This is a known problem due to incomplete spectral library for
-% generating stellar spectral energy distributions from physical parameters
-% (Choi+2016).
-
-
-% We searched the Simbad (\citealt{2000A&AS..143....9W}) database for existing
-% radial velocity measurements of the candidate members
-
-\section{Modelling as a group}
-
-Although the original selection was done by selecting comoving pairs, we can
-also model the proper motions of stars in a group (connected component) as drawn
-from a single mean velocity with a small dispersion.
-\todo{rephrase:
-This is essentially the moving cluster method or convergent point method,
-but instead of taking procedural steps to confirm or find the existence of a
-convergent point, we wish to take forward modelling approach with a probabilistic basis.}
-\todo{CITE: Lindegren etc.}
-
-The components of the model are:
-\begin{itemize}
-  \item We assume that the velocity $\vec{v}_i$ of the star $i$ is drawn from
-    a single Gaussian component with mean (group) velocity $\vec{u}$ and
-    an isotropic dispersion $\sigma_{u}$:
-    $$\vec{v}_i \sim \normal(\vec{u},\,\sigma_{u}).$$
-    Then, the proper motion of star $i$ is $\mat{M}_i(\alpha_i,\,\delta_i)\vec{v}_i$ where
-    $\mat{M}_i$ is the rotation matrix that transforms the equatorial rectangular coordinates
-    \footnote{The choice of this coordinate system is arbitrary. Many of the studies on
-      moving grouops in the Solar neighborhood choose the Galactic coordinates which additionally
-      depends on $(\alpha_\mathrm{GC},\,\delta_\mathrm{GC})$.
-    }
-    to the tangential coordinates at the location $(\mathrm{R.A.},\,\mathrm{Decl.}) = (\alpha_i,\,\delta_i)$.
-
-  \item We assume that the noise model for the \gaia\ data is Gaussian, and
-    the covariance matrix $C_i$ is given and fixed:
-    $$(\tilde\varpi_i,\,\tilde\mu_{\alpha,i}^*,\,\tilde\mu_{\delta,i}) \sim
-      \normal((\varpi_i,\,\mu_{\alpha,i}^*,\,\mu_{\delta,i}),\,C_i)$$
-
-  \item \emph{Priors}: We assume a constant density prior ($p(r) \propto r^2$) and a Gaussian
-    prior with 30~\kms\ dispersion for the mean velocity of the group.
-    For the dispersion $\sigma_u$, we assume a uniform prior in $[0,\,50)$.
-\end{itemize}
-
-
-\begin{figure}
-  \centering
-  \includegraphics[width=0.9\linewidth]{quiver_pm.pdf}
-  \caption{Proper-motion vectors (left) and residual proper motion vectors (right)
-    for 29 stars in \groupTen\ on sky.
-    The residuals are from subtracting the projected mean velocity (\todo{see section X}).
-    The length scale in each panel marked in the upper left corner.
-  }
-  \label{fig:quiver_pm}
-\end{figure}
-
-\begin{figure}
-  \centering
-  \includegraphics[width=0.9\linewidth]{isotropic_single_mc.pdf}
-  \caption{
-    Posterior distribution of the mean velocity $\vec{u} = (u_x,\,u_y,\,u_z)$ and
-    isotropic dispersion $\sigma_u$.
-    Note priors.
-  }
-  \label{fig:fit}
-\end{figure}
-
-\begin{figure}
-  \centering
-  \includegraphics[width=0.9\linewidth]{rv_ra_id.pdf}
-  \caption{
-    Comparing astrometric radial velocities (blue patches) to
-    measurements available from the literature (black circles).
-    The stars are spread along their R.A. in the vertical direction.
-    The blue patches for each star shows the posterior distribution
-    of the star's radial velocity predicted from the proper motions of
-    all stars in the group.
-    All available measurements removing duplicated exact values from
-    the literature are shown.
-    In general, the the predicted astrometric RVs match one or more
-    available measurements for a star.
-  }
-  \label{fig:rv_ra_id}
-\end{figure}
-
-We first do an optimization using L-BFGS algorithm starting from the
-initial values $d_{i,0} = 1/{\tilde \varpi_0}$, a random mean velocity $\vec{u}_0$
-drawn from the prior distribution, and $\sigma_u=10$~\kms.
-We find that the optimized mean velocity is \meanVelocityOpt\ and the dispersion \sigVelocityOpt.
-We then sample the posterior distribution of $d_i$, $\vec{u}$ and $\sigma_u$ starting
-from this optimum.
-\figname~\ref{fig:quiver_pm} and \figname~\ref{fig:fit} summarizes
-the fit result.
-
-
-Because this group spans a large area on sky,
-the geometric constraint on the radial velocities of the stars is interesting.
-\todo{Figure:radial velocities}
-We compare this to a compilation of radial velcoity measurements from the literature.
-We searched the Simbad database ...
-
-\section{Known and probable companions to candidate members}
-
-\section{Color-magnitude diagrams and isochrone ages}
-
-
-- little or no dust reddening due to high galactic latitutde
-- astrometric noise
-
-
-\section{Discussion}
+\section{Summary \& Discussion}
 \label{sec:discussion}
+
+We presented
 
 % \input{t1.tex}
 
@@ -415,11 +478,6 @@ We searched the Simbad database ...
 %   }
 %   \label{fig:cmd_gjg}
 % \end{figure}
-
-
-\appendix
-
-\section{Queries to the Gaia Archive}
 
 
 \acknowledgements
