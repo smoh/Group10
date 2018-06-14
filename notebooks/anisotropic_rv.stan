@@ -36,7 +36,7 @@ transformed data {
 }
 
 parameters {
-  vector<lower=0>[N] d;     // true distances [kpc]
+  vector<lower=0>[N] d;     // true distances [pc]
   vector[3] v0;             // mean velocity  [km/s]
   vector<lower=0>[3] sigv;             // dispersion     [km/s]
   corr_matrix[3] Omega;                // correlation
@@ -49,9 +49,9 @@ transformed parameters {
   Sigma = quad_form_diag(Omega, sigv);
 
   for(i in 1:N) {
-    a_model[i][1] = 1./d[i];
-    a_model[i][2] = M[i,1] * v0 / d[i] / 4.74;
-    a_model[i][3] = M[i,2] * v0 / d[i] / 4.74;
+    a_model[i][1] = 1000./d[i];
+    a_model[i][2] = M[i,1] * v0 / (d[i]/1000.) / 4.74;
+    a_model[i][3] = M[i,2] * v0 / (d[i]/1000.) / 4.74;
     a_model[i][4] = M[i,3] * v0;
   }
 }
@@ -68,7 +68,7 @@ model {
   }
   for(i in 1:N) {
     D[i,2:4,2:4] = D[i,2:4,2:4]
-      + M[i] * quad_form_diag(Omega, sigv) * transpose(M[i]) / d[i]^2 / 4.74^2;
+      + M[i] * quad_form_diag(Omega, sigv) * transpose(M[i]) / (d[i]/1000.)^2 / 4.74^2;
   }
 
   for(i in 1:N) {

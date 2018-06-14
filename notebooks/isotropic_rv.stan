@@ -36,7 +36,7 @@ transformed data {
 }
 
 parameters {
-  vector<lower=0>[N] d;     // true distances [kpc]
+  vector<lower=0>[N] d;     // true distances [pc]
   vector[3] v0;             // mean velocity  [km/s]
   real<lower=0> sigv;       // dispersion     [km/s]
 }
@@ -45,9 +45,9 @@ transformed parameters {
   vector[4] a_model[N];
 
   for(i in 1:N) {
-    a_model[i][1] = 1./d[i];
-    a_model[i][2] = M[i,1] * v0 / d[i] / 4.74;
-    a_model[i][3] = M[i,2] * v0 / d[i] / 4.74;
+    a_model[i][1] = 1000./d[i];
+    a_model[i][2] = M[i,1] * v0 / (d[i]/1000.) / 4.74;
+    a_model[i][3] = M[i,2] * v0 / (d[i]/1000.) / 4.74;
     a_model[i][4] = M[i,3] * v0;
   }
 }
@@ -62,8 +62,8 @@ model {
   // likelihood
   for(i in 1:N) {
     D[i] = C[i];
-    D[i,2,2] = D[i,2,2] + sigv^2 / d[i]^2 / 4.74^2;
-    D[i,3,3] = D[i,3,3] + sigv^2 / d[i]^2 / 4.74^2;
+    D[i,2,2] = D[i,2,2] + sigv^2 / (d[i]/1000.)^2 / 4.74^2;
+    D[i,3,3] = D[i,3,3] + sigv^2 / (d[i]/1000.)^2 / 4.74^2;
   }
 
   for(i in 1:N) {
@@ -76,8 +76,8 @@ generated quantities {
   // vi[i] = [pmra, pmdec, rv]
   vector[3] vi[N];
   for(i in 1:N) {
-    vi[i][1] = M[i,1] * v0 / d[i] / 4.74;
-    vi[i][2] = M[i,2] * v0 / d[i] / 4.74;
+    vi[i][1] = M[i,1] * v0 / (d[i]/1000.) / 4.74;
+    vi[i][2] = M[i,2] * v0 / (d[i]/1000.) / 4.74;
     vi[i][3] = cos(dec_rad[i])*cos(ra_rad[i])*v0[1]
         + cos(dec_rad[i])*sin(ra_rad[i])*v0[2] + sin(dec_rad[i])*v0[3];
   }
