@@ -113,61 +113,58 @@
 \section{Introduction} % (fold)
 \label{sec:introduction}
 
-Comoving, coeval stars in the Solar neighborhood are valuable for
-many different fields of astrophysics.
-They are important benchmarks for our understanding of stellar physics
-and for calibrating stellar measurements among different mass ranges
-\citep[e.g.,][]{2018arXiv180409378G,2018MNRAS.tmp.1228M}.
-In the general picture that stars form in groups and remain
-kinematically coherent until they are dissolved into the field population,
-a detailed census of these objects is closely related to the recent star
-formation history in the local volume
-as well as the dynamics of their disruption.
+Comoving, coeval stars in the Solar neighborhood are valuable astrophysics
+laboratories for studying stellar properties, stellar evolution and galactic
+dynamics \citep[e.g.,][]{2018arXiv180409378G,2018MNRAS.tmp.1228M}.
+Multiple stars form in each molecular cloud often in kinematically coherent
+groups.
+Galactic dynamics determine how and when these groups eventually  dissolved into
+the field population.
+Thus, a detailed census of these objects traces both recent star formation
+history in the local volume as well as the dynamics of their disruption.
 Individual star clusters or coeval moving groups are also interesting dynamical
-entities themseleves as their dynamical evolution is intimately tied to their
-internal structure and external perturbation such as giant molecular clouds.
+entities themselves as their dynamical evolution is intimately tied to their
+internal structure and external perturbation from the Galactic tides or giant
+molecular clouds.
 Finally, within $\approx 100$~pc, members of young stellar groups represent the
 best samples to study dusty debris disk, exopalnets and brown dwarfs through
 direct imaging.
 
-We are entreing a new era in charting the kinematic substructure and stellar
-populations in the Solar neighborhood with the recent second data release (DR~2)
-of \gaia\ \citep{2018arXiv180409365G}, which provides parallaxes, proper motions
-and precise two-band photometry of stars brighter than $G=20$~mag as well as
-radial velocities for stars brighter than 12~mag.
-Previously, we performed a search for comoving pairs using the Tycho-Gaia
-Astrometric Solution (\tgas), a subset of \gaia\ DR~1 which provides astrometric
-measurements for 2~million sources in Tycho-2 catalog ($G<12$~mag).
-By looking for comoving pairs blindly, we have naturally recovered
-many of the other larger known comoving stellar groups, ranging from
-loose associations to open clusters.
-However, we have also found some new large and small groups that
-were not previously idendified \citep[see also][]{2018arXiv180409058F}.
-% TODO: discuss Faherty 2018
+\gaia's second  data release \citep[][DR 2]{2018arXiv180409365G} marks a new
+era in charting the kinematic substructure and stellar populations in the Solar
+neighborhood.
+It provides parallaxes, proper motions and precise two-band photometry of stars
+brighter than $G=20$ as well as radial velocities for stars brighter than
+$G=12$.
+\citet{2017AJ....153..257O} presents a search for comoving pairs using the
+Tycho-Gaia Astrometric Solution (\tgas), a subset of \gaia\ DR~1 which provides
+astrometric measurements for 2~million sources in Tycho-2 catalog ($G<12$~mag).
+This comoving pairs search both recovered many of the large known nearby
+comoving stellar groups, ranging from loose associations to open clusters and
+identified several previously unidentified new large and small groups
+\citep[see also][]{2018arXiv180409058F}.
+In this paper, we focus on one of the most interesting of the coeval moving
+groups discovered in \citet{2017AJ....153..257O} and use the newly released \gaia\
+DR 2 to present an extended analysis of the properties.
+Group 10 is the largest nearby ($\approx 100$~pc) group with little prior
+discussion in the literature.
+% Not sure it's fitting to separate section ...
+We summarize previous analyses of the stars in Group 10 in \sectionname~\ref{sec:history},
+present the data and candidate member selection in \sectionname~\ref{sec:data},
+discuss the ages, kinematic modelling and morphology of the group in \sectionname~\ref{sec:analysis},
+and summarize in \sectionname~\ref{sec:discussion}.
 
-Here, we confirm one of the new coeval moving groups discovered in
-\citet{2017AJ....153..257O} as Group 10 with \gaia\ DR 2 and present an extended
-analysis of the properties. This group stands out as the largest nearby
-($\approx 100$~pc) group with little prior discussion in the literature.
-We present the data and candidate member selection in
-\sectionname~\ref{sec:data}, discuss the ages, kinematic modelling and
-morphology of the group in \sectionname~\ref{sec:analysis},
-and summarize in \ref{sec:discussion}.
-
-
-\subsection{Previous identifications}
-\label{subsec:history}
+\section{Previous identifications}
+\label{sec:history}
 
 Moving group identifications are often scattered throughout the literature. We
-reviewed a (non-exhaustive) bibliography associated with all \tgas\ sources in
+reviewed the bibliography associated with all \tgas\ sources in
 \groupTen\ from our previous selection \citep{2017AJ....153..257O} using the
 Simbad database, and note previous identifications of this group.
 
-Three A-type stars that were selected in \citet{2017AJ....153..257O} as potential
-members of \groupTen,
-HIP 66198 (81 Uma), HIP 67231 (84 Uma), and HIP 67005, are part of an open cluster
-suggested by \citet{1977ATsir.969....7L} and dubbed Latyshev 2 by Archinal \& Hynes.
-The reality of this putative cluster, composed of 7 A-type stars
+\citet{1977ATsir.969....7L} had identified three of the A-type stars in \groupTen,
+HIP 66198 (81 Uma), HIP 67231 (84 Uma), and HIP 67005, as part of
+a possible open cluster composed of 7 A-type stars
 (HIP 66198,
 HIP 67231,
 HIP 67005,
@@ -175,15 +172,28 @@ HIP 67848,
 HIP 66738,
 TYC 3851-606-1,
 TYC 3469-497-1)
-was dismissed in a recent review by \citet{2016IAUS..314...21M}.
-However, here we report that there indeed is a comoving group containing
-some of the stars in Latyshev 2, and demonstrate
-its physical reality more convincingly.
+dubbed Latyshev 2 by \citet{2003stcl.book.....A}.
+In a recent review, \citet{2016IAUS..314...21M} doubts the physical reality of
+this putative cluster based on the lack of a convergent point and deviances in
+the kinematics.
+However, we will show that \emph{some} of these stars are clearly part of a distinct
+kinematic structure.
 
 
 \section{Data \& Sample}
 \label{sec:data}
 
+% TODO: Please rewrite the paragraph.  Remove the first sentence.  Stars with a sentence that describes the query used
+% precisely so that someone else can reproduce it.  Do not make people go back to your previous paper to get the
+% information.
+%
+% TODO: Can you quote a typical error on the stellar velocities for the 194 sources (and the 31 sources) with velocities.
+% How much of the spread in velocities is physical and how much is due to uncertainties in the GAIA measurements
+
+
+% TODO: Figure 1 caption - please tell me what cuts were made to define the sample in
+% figure 1a and 1b.  Assume that the reader is looking only at the figures and not
+% at the text
 \begin{figure}
   \includegraphics[width=0.95\linewidth]{g10_sky_pm.pdf}
   \caption{Distribution of stars in the neighborhood of \groupTen\
@@ -270,6 +280,34 @@ used in further analysis.
 
 \section{Analysis}
 \label{sec:analysis}
+
+% TODO
+% Figure 2— Describe the isochrones in the caption . Isochrones of log(age) ≈ 8.4 from MIST (black) and PARSEC (blue) models are plotted in Figure 2a for comparison.
+%  I would start the analysis section with a question: is group 10 a single age stellar population?  This might be a better title
+%
+% for 3.1 [now 4.1]
+%
+% Try starting the second paragraph with the question: “How old is group 10?”
+%
+% Start the third paragraph: “Why do stars in the faint end of figure 1 deviate from the isochrones?”
+%
+%
+% Section 3.3:  Given the large area on the sky, did you have to include Oort’s A and B coefficients in the anlayses?
+%
+% Do you understand the origin of the formal (but small) difference between the two velocities?
+
+% TODO
+% Section 3.4:
+%
+% A thought on the orbit of the group — I think that you can argue that the group did not experience a close passage by a molecular cloud so that
+% its median height (or more precisely its z action (Jz) ) should be close to its birth value.
+%
+% I also wonder whether the age and coldness of the group places an interesting constraint on any interaction with perturbs
+%
+% Have you fit mean velocities for the two subgroups?  How different are they?
+%
+% If you start with an 8 parsec diameter group and run it forward in time on this orbit (say following a few hundred stars), what do you find?
+
 
 \subsection{Color-magnitude diagrams and isochrone ages}
 
