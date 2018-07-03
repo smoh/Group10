@@ -183,34 +183,42 @@ kinematic structure.
 \section{Data \& Sample}
 \label{sec:data}
 
-% TODO: Please rewrite the paragraph.  Remove the first sentence.  Stars with a sentence that describes the query used
-% precisely so that someone else can reproduce it.  Do not make people go back to your previous paper to get the
-% information.
-%
-% TODO: Can you quote a typical error on the stellar velocities for the 194 sources (and the 31 sources) with velocities.
-% How much of the spread in velocities is physical and how much is due to uncertainties in the GAIA measurements
+% How much of the spread in velocities is physical and how much is due to
+% uncertainties in the GAIA measurements
 
 
-% TODO: Figure 1 caption - please tell me what cuts were made to define the sample in
-% figure 1a and 1b.  Assume that the reader is looking only at the figures and not
-% at the text
 \begin{figure}
   \includegraphics[width=0.95\linewidth]{g10_sky_pm.pdf}
   \caption{Distribution of stars in the neighborhood of \groupTen\
     on sky (a), in proper-motion space (b) and in tangential-velocity space (c).
+    These are \nstarsInRegion\ \gaia\ sources within
+    $(20,\,9)$ degrees from the mean position
+    $(\mathrm{R.A.},\,\mathrm{Decl.}) = (215.32,\,56.133)$ and
+    20~pc around the median parallax of $9.94$.
     We select candidate members (blue circles) by fitting two-component Gaussian
-    mixture model in tangential-velocity space.
+    mixture model in tangential-velocity space
+    The panel (c) is a zoom-in of the box indicated in panel (b).
+    See \sectionname~\ref{sec:data} for details.
     }
   \label{fig:distributions}
 \end{figure}
 
-We use the astrometric, photometric, and spectroscopic parameters of
-\gaia\ DR~2.
-Based on the angular and parallactic spread of this group from the previous
-discovery using \tgas, we query the same region in \gaia\ DR 2 with generous
-cuts applied in \ra, \dec, and parallax.
-We go out to 20 degrees and 9 degrees from the mean position in \ra\ and \dec\
-respectively, and a nominal 20~pc in distance around the median parallax.
+We search for candidate members of \groupTen\ in \gaia\ DR 2
+based on the angular and parallactic spread of this group from the previous
+discovery using \tgas.
+We go out to 20 degrees and 9 degrees from the mean position
+$(\alpha,\,\delta) = (215.32,\,56.133)$
+in \ra\ and \dec\ direction respectively,
+and a nominal 20~pc in distance around the median parallax of $9.94$.
+The exact query is
+\begin{verbatim}
+  select *
+  from gaiadr2.gaia_source
+  where
+      ra between 195.320 and 235.320
+      and dec between 47.134 and 65.134
+      and parallax between 8.3 and 12.4
+\end{verbatim}
 There are \nstarsInRegion\ \gaia\ sources within these cuts.
 Figure~\ref{fig:distributions} shows the distribution of these sources on sky
 and in proper-motion space.
@@ -237,18 +245,26 @@ are indicated in \figname~\ref{fig:distributions}c.
 We expect this selection to be neither complete nor without contamination.
 However, given the clear overdensity in proper-motion space within this parallax slice
 of the group, we expect the contamination to be low.
-% We think this selection is sufficient for a first attempt to examine the general
-% properties of the group.
-Of 194 sources selected, there are 31 sources that have radial velocities (RVs)
-measured.
-The median and standard deviation of the velocities of 31 sources with RVs in
-the Galactic coordinates are $(U,\,V,\,W) = (-3.6,\,-9.1,\,-1.6)~\kms$ and
-$(\sigma_U,\,\sigma_V,\,\sigma_W) = (0.60,\,0.88,\,1.23)~\kms$.
-We note that 95\% of the selected candidate members have parallax
-signal-to-noise ratios above 24 with median signal-to-noise ratio of 170.
+
 Table~\ref{tab:candidates} provides all relevant \gaia\ data for the candidate members
 and the combined photometry from \tmass, \allwise, and \panstarrs\
 used in further analysis.
+We note that 95\% of the selected candidate members have parallax
+signal-to-noise ratios above 24 with median signal-to-noise ratio of 170.
+From propagation of uncertainties ignoring covariances,
+formal velocity uncertainties in R.A. and Decl. direction span
+$0.25$--$0.79$~\kms\ and $0.05$--$0.17$~\kms\ ($25$--$75$ percentiles).
+Of 194 sources selected, there are 31 sources that have radial velocities (RVs)
+measured.
+The RV uncertainties are similarly small spanning $0.46$--$0.95$~\kms.
+The median and standard deviation of the velocities of 31 sources with RVs in
+the Galactic coordinates are $(U,\,V,\,W) = (-3.6,\,-9.1,\,-1.6)~\kms$ and
+$(\sigma_U,\,\sigma_V,\,\sigma_W) = (0.60,\,0.88,\,1.23)~\kms$.
+In \sectionname~\ref{sec:fitting}, we derive
+the isotropic velocity dispersion of the candidate members with
+forward modelling.
+
+
 
 \begin{deluxetable}{l|l|l}
   \tablecaption{Candidate members of \groupTen\ selected from \gaia\ DR 2
@@ -282,8 +298,10 @@ used in further analysis.
 \label{sec:analysis}
 
 % TODO
-% Figure 2— Describe the isochrones in the caption . Isochrones of log(age) ≈ 8.4 from MIST (black) and PARSEC (blue) models are plotted in Figure 2a for comparison.
-%  I would start the analysis section with a question: is group 10 a single age stellar population?  This might be a better title
+% Figure 2— Describe the isochrones in the caption . Isochrones of log(age) ≈
+% 8.4 from MIST (black) and PARSEC (blue) models are plotted in Figure 2a for
+% comparison. I would start the analysis section with a question: is group 10 a
+% single age stellar population?  This might be a better title
 %
 % for 3.1 [now 4.1]
 %
@@ -299,14 +317,18 @@ used in further analysis.
 % TODO
 % Section 3.4:
 %
-% A thought on the orbit of the group — I think that you can argue that the group did not experience a close passage by a molecular cloud so that
-% its median height (or more precisely its z action (Jz) ) should be close to its birth value.
+% A thought on the orbit of the group — I think that you can argue that the
+% group did not experience a close passage by a molecular cloud so that its
+% median height (or more precisely its z action (Jz) ) should be close to its
+% birth value.
 %
-% I also wonder whether the age and coldness of the group places an interesting constraint on any interaction with perturbs
+% I also wonder whether the age and coldness of the group places an interesting
+% constraint on any interaction with perturbs
 %
 % Have you fit mean velocities for the two subgroups?  How different are they?
 %
-% If you start with an 8 parsec diameter group and run it forward in time on this orbit (say following a few hundred stars), what do you find?
+% If you start with an 8 parsec diameter group and run it forward in time on
+% this orbit (say following a few hundred stars), what do you find?
 
 
 \subsection{Color-magnitude diagrams and isochrone ages}
