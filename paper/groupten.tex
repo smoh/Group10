@@ -298,17 +298,12 @@ forward modelling.
 \label{sec:analysis}
 
 % TODO
- % I would start the analysis section with a question: is group 10 a
+% I would start the analysis section with a question: is group 10 a
 % single age stellar population?  This might be a better title
 %
-% for 3.1 [now 4.1]
 %
-% Try starting the second paragraph with the question: “How old is group 10?”
-%
-% Start the third paragraph: “Why do stars in the faint end of figure 1 deviate from the isochrones?”
-%
-%
-% Section 3.3:  Given the large area on the sky, did you have to include Oort’s A and B coefficients in the anlayses?
+% Section 3.3:  Given the large area on the sky, did you have to include Oort’s
+% A and B coefficients in the anlayses?
 %
 % Do you understand the origin of the formal (but small) difference between the two velocities?
 
@@ -361,8 +356,8 @@ forward modelling.
   \label{fig:age_DavidHillenbrand2015}
 \end{figure}
 
-Figure~\ref{fig:cmd}a shows the color-magnitude diagrams
-of the candidate group members using the \gaia\ photometry.
+Figure~\ref{fig:cmd}a shows the color-magnitude diagrams of the candidate group
+members using the \gaia\ photometry.
 The absolute $G$ magnitude $M_G$ is calculated as $G + 5\log(\varpi) -10$ where
 $\varpi$ is parallax in mas.
 The group is at a high galactic latitude (median $b=55$~degrees),
@@ -376,16 +371,18 @@ We applied no correction for dust to the data or isochrone models.
 
 The candidate members (black and red circles) resemble a clean single-age population
 that lies on a very narrow main-sequence compared to the ``field'' stars within $100$~pc.
-The field sample was constructed by querying all stars with $\varpi>10$~mas,
+The field sample was constructed by querying all stars with parallax $\varpi>10$~mas,
 parallax signal-to-noise ratio over 50 and good \bprp\ colors filtered by
 \texttt{phot\_bp\_rp\_excess\_factor} accordning to cuts in \citet{2018arXiv180409378G}.
+
+How old is \groupTen?
 In order to estimate an approximate age of the group,
 we compared the distribution of candidate members in the color-magnitude diagram
 to MIST \citep[][with rotation]{2016ApJ...823..102C} and
 PARSEC isochrones \citep[v1.2S;][]{2012MNRAS.427..127B,2015MNRAS.452.1068C}
 of solar metallicity visually,
 and found $\log(\mathrm{age}) \approx 8.4$ (250~Myr) to be a good fit.
-A range of $\log(\mathrm{age}) = (8.2-8.55)$ should encapsulate the plausible
+A range of $\log(\mathrm{age}) = (8.2-8.55)$ encapsulates the plausible
 age of the group judging from the disagreement in lower-main sequence for
 younger ages (with PARSEC models) and the main-sequence turn-off for older ages.
 Isochrones of $\log(\mathrm{age}) \approx 8.4$
@@ -401,7 +398,8 @@ conditions to match the observed star clusters
 A more careful modelling is required to properly infer the age and metallicity
 of the group.
 
-At the very faint end, the \gaia\ BP-RP colors are may be incorrect due to
+What are the sources in between the main-sequence and the white dwarf sequence?
+At the very faint end, the \gaia\ BP-RP colors may be incorrect due to
 contamination from nearby sources as no deblending was performed for BP and RP
 bands in DR~2 \citep{2018arXiv180409368E}.
 Following \citet{2018arXiv180409378G}, we used emperical cuts to the
@@ -411,6 +409,7 @@ Figure~\ref{fig:cmd}.
 In order to illuminate the nature of these sources, we use four other deeper
 survey magnitudes (\tmass\ $J$, \allwise\ $W1$ and \panstarrs\ $r$ and $y$) with
 \gaia\ $G$ band magnitudes.
+\figname~\ref{\fig:cmd}c-e show the color-magnitude diagrams using these photometry.
 %
 Many of these sources seem to be lower-mass stars further down the main-sequence
 with even redder colors.
