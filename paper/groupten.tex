@@ -338,18 +338,17 @@ forward modelling.
   \includegraphics{age_DavidHillenbrand2015.pdf}
   \caption{Age estimates for five candidate members by \citet{2015ApJ...804..146D}.
     For each star, the black vertical line is the mode of the posterior
-    distribution, and the gray band and line marks 68\% and 95\% confidence
-    interval.
+    distribution, and the gray band and line mark the 68\% and 95\% confidence
+    intervals, respectively.
   }
   \label{fig:age_DavidHillenbrand2015}
 \end{figure}
 
-Figure~\ref{fig:cmd}a shows the color-magnitude diagrams of the candidate group
-members using the \gaia\ photometry.
-The absolute $G$ magnitude $M_G$ is calculated as $G + 5\log(\varpi) -10$ where
-$\varpi$ is parallax in mas.
+Figure~\ref{fig:cmd}a shows the color-magnitude diagram of the candidate group
+members using the \gaia\ photometry \todo{and of all stars within XX pc (blue shaded background)}.
+The absolute $G$ magnitude, $M_G$, is calculated as $G + 5\log(\varpi) - 10$ where $\varpi$ is the \gaia-measured parallax in milliarcseconds.
 The group is at a high galactic latitude (median $b=55$~degrees),
-and the extinction is very low.
+and the extinction is very low:
 We checked the dust maps of \citet{1998ApJ...500..525S} and
 \citet{2017ApJ...846...38L}
 at the location of candidate members and found the median reddening to be
@@ -357,18 +356,18 @@ $E(B-V)\lesssim 0.012$~mag although there are some variations across the region 
 the maximum reddening of 0.025~mag.
 We applied no correction for dust to the data or isochrone models.
 
-The candidate members (black and red circles) resemble a clean single-age population
+The candidate members (black and red circles) resemble a clean, single-age population
 that lies on a very narrow main-sequence compared to the ``field'' stars within $100$~pc.
 The field sample was constructed by querying all stars with parallax $\varpi>10$~mas,
 parallax signal-to-noise ratio over 50 and good \bprp\ colors filtered by
-\texttt{phot\_bp\_rp\_excess\_factor} accordning to cuts in \citet{2018arXiv180409378G}.
+\texttt{phot\_bp\_rp\_excess\_factor} according to quality cuts in the Appendix of \citet{2018arXiv180409378G}.
 
 How old is \groupTen?
 In order to estimate an approximate age of the group,
-we compared the distribution of candidate members in the color-magnitude diagram
+we visually compared the distribution of candidate members in the color-magnitude diagram
 to MIST \citep[][with rotation]{2016ApJ...823..102C} and
 PARSEC isochrones \citep[v1.2S;][]{2012MNRAS.427..127B,2015MNRAS.452.1068C}
-of solar metallicity visually,
+of solar metallicity,
 and found $\log(\mathrm{age}) \approx 8.4$ (250~Myr) to be a good fit.
 A range of $\log(\mathrm{age}) = (8.2-8.55)$ encapsulates the plausible
 age of the group judging from the disagreement in lower-main sequence for
@@ -379,7 +378,7 @@ for comparison.
 The discrepancy between the MIST models and the data for low-mass
 ($M\lesssim0.6~m_\odot$) stars is a well-known problem seen in many young open
 clusters or associations and generic in many stellar models, and is attributed
-to incomplete atomic and molecular line opacity data.
+to incomplete atomic and molecular line opacity data \todo{add citation}.
 This is remedied in PARSEC models by revising and calibrating the boundary
 conditions to match the observed star clusters
 \citep{2014MNRAS.444.2525C}, leading to a better agreement with the data.
@@ -390,21 +389,20 @@ What are the sources in between the main-sequence and the white dwarf sequence?
 At the very faint end, the \gaia\ BP-RP colors may be incorrect due to
 contamination from nearby sources as no deblending was performed for BP and RP
 bands in DR~2 \citep{2018arXiv180409368E}.
-Following \citet{2018arXiv180409378G}, we used emperical cuts to the
+Following \citet{2018arXiv180409378G}, we use empirical cuts in the
 \texttt{phot\_bp\_rp\_excess\_factor} as a function of BP-RP color in order to
-flag these sources which are marked as `\texttt{x}' in all panels of
+flag these sources, which are marked as `\texttt{x}' in all panels of
 Figure~\ref{fig:cmd}.
 In order to illuminate the nature of these sources, we use four other deeper
-survey magnitudes (\tmass\ $J$, \allwise\ $W1$ and \panstarrs\ $r$ and $y$) with
+survey magnitudes (\tmass\ $J$, \allwise\ $W1$, \panstarrs\ $r$ and $y$) with
 \gaia\ $G$ band magnitudes.
-\figname~\ref{\fig:cmd}c-e show the color-magnitude diagrams using these photometry.
+\figname~\ref{fig:cmd}c--e show the color-magnitude diagrams using these photometry.
 %
-Many of these sources seem to be lower-mass stars further down the main-sequence
-with even redder colors.
+Several of these outliers in the \gaia color-magnitude diagram appear to be low-mass stars consistent with being on the lower main sequence in other color combinations.
 
 For five \hipparcos\ stars of the candidate members,
 an independent age determination by \citet{2015ApJ...804..146D} exists.
-The stars were treated as field stars and modelled individually.
+The stars were treated as field stars and modeled individually.
 We used the cross-match to Tycho-2 provided in the Gaia Archive
 in order to retrieve the \hipparcos\ identifiers.
 Figure~\ref{fig:age_DavidHillenbrand2015} shows the posterior distributions
@@ -425,18 +423,17 @@ This is in good agreement with the visually-determined isochrone age.
   \label{fig:nuv}
 \end{figure}
 
-Young low-mass stars with a substantial convective layer stand out from
-field stars in their enhanced UV and X-ray emission
-as a result of strong internal magnetic dynamo coupled with rapid rotation
-enhancing chromospheric and coronal activity
+Young low-mass stars with substantial convective layers stand out from
+field stars in their enhanced ultraviolet (UV) and X-ray emission:
+a strong internal magnetic dynamo coupled with rapid rotation enhances chromospheric and coronal activity
 \citep{2004ARA&A..42..685Z,2008hsf2.book..757T,2011ApJ...727....6S,2013ApJ...774..101R}.
-Thus, the UV and X-ray photometry can provide an independent indication of youth
+Thus, UV and X-ray photometry can provide an independent indication of age
 for young stars in a coeval moving group.
-We checked the UV and X-ray detection of
-the candidate members by cross-mathing to the \galex\ source catalog
+We checked the UV and X-ray detections of
+the candidate members by cross-matching to the \galex\ source catalog
 \citep{2005ApJ...619L...1M} and the \rosat\ all-sky survey
 \citep[2RXS;][]{2016A&A...588A.103B}.
-We used $2\arcsec$ and $20\arcsec$ search radius for \galex\ and 2RXS respectively.
+We used a $2\arcsec$ and $20\arcsec$ search radius for \galex\ and 2RXS respectively.
 When there are multiple \galex\ matches to a source, we choose the one with
 the smallest NUV magnitude error.
 We find that 62 of our candidate members ($\sim30$\%) have corresponding \galex\
