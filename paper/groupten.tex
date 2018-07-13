@@ -419,6 +419,8 @@ This is in good agreement with the visually-determined isochrone age.
   \includegraphics{nuv_xray.pdf}
   \caption{$\mathrm{NUV}-\mathrm{G}$ colors of 62 \galex\ cross-matched
     candidate members in \groupTen\ as a function of their \bprp\ color.
+    White dwarfs, which extend to even bluer colors (lower left), have been removed from the field sample with a simple cut in the
+    \bprp\ vs. $M_G$ color-magnitude diagram ($M_G< 3(\bprp+0.5)+7.5$ if $\bprp<2$).
     }
   \label{fig:nuv}
 \end{figure}
@@ -437,18 +439,14 @@ We used a $2\arcsec$ and $20\arcsec$ search radius for \galex\ and 2RXS respecti
 When there are multiple \galex\ matches to a source, we choose the one with
 the smallest NUV magnitude error.
 We find that 62 of our candidate members ($\sim30$\%) have corresponding \galex\
-UV detection, of which 10 are also X-ray sources.
-There are 4 additional X-ray detected candidate members without UV detection.
+UV detections, of which 10 are also X-ray sources.
+There are 4 additional X-ray detected candidate members without UV detections.
 The $\mathrm{NUV}-\mathrm{G}$ colors of the candidate members tend
-to be at the edge of the distribution of field stars\footnote{
-  White dwarfs, which extends to even bluer colors (lower left), have been removed
-  from the field sample for \figname~\ref{fig:nuv} with a simple cut in
-  \bprp\ vs. $M_G$ color-magnitude diagram ($M_G< 3(\bprp+0.5)+7.5$ if $\bprp<2$).
-}
+to be at the edge of the distribution of field stars
 at fixed \bprp\ colors towards brighter
 $\mathrm{NUV}$ magnitudes or show UV excess (\figname~\ref{fig:nuv}).
-This is commonly seen in young stars upto ages of a few Myr old,
-providing an indepdenent qualitative confirmation of the the isochrone age.
+This is commonly seen in young stars up to ages of a few Myr old,
+providing an additional qualitative confirmation of the the isochronal age estimate.
 
 \subsection{Mean velocity and velocity dispersion}
 \label{sec:fitting}
@@ -456,35 +454,37 @@ providing an indepdenent qualitative confirmation of the the isochrone age.
 In this section, we derive the mean velocity and velocity dispersion of the
 group using either only parallaxes and proper motions or full 6D information
 including radial velocities.
-Although the original selection was done by selecting comoving pairs, we can
-also model the proper motions of the stars in the group as drawn from a single
-mean velocity and a dispersion.
+Although the original selection was done by selecting comoving pairs \citep{2017AJ....153..257O}, we can
+also model the proper motions of the stars in the group as being drawn from a low-dispersion velocity distribution around a mean value.
 Historically, the basic assumption of a group of stars having the same velocity
-has been used to derive a distance to the group (moving cluster method).
+has been used to derive a distance to the group (the ``moving cluster method'').
 % or define the membership of each star.
-However, given the exquisite measurements of parallaxes and proper motions via
-astrometry, a forward modeling of the same basic model may yield interesting
-inferences of geometric radial velocities of the group or other residual
-velocity patterns beyond the simple isotropic dispersion
-\citep{1999A&A...348.1040D,2002A&A...381..446M}
+However, given the exquisite astrometry for these nearby stars, forward-modeling the velocity distribution yields interesting
+geometric constraints on the radial velocity of the group and other residual
+velocity patterns beyond a simple isotropic dispersion
+\citep{1999A&A...348.1040D,2002A&A...381..446M}.
 
-Here, we fit the simplest model of single isotropic Gaussian component to the data.
+To model the velocity distribution of the group, we use a single isotropic Gaussian and infer the 3D mean and dispersion of this distribution given the noisy astrometric measurements from \gaia.
 The components of the model are:
 \begin{itemize}
   \item We assume that the velocity $\vec{v}_i$ of the star $i$ is drawn from
     a single Gaussian component with mean (group) velocity $\vec{u}$ and
     an isotropic dispersion $\sigma_{u}$:
-    $$\vec{v}_i \sim \normal(\vec{u},\,\sigma_{u}).$$
+    \begin{equation}
+        \vec{v}_i \sim \normal(\vec{u},\,\sigma_{u}).
+    \end{equation}
     Then, the proper motion of star $i$ is
-    $\transp{(\pmra,\,\pmdec)} = \mat{M}_i(\alpha_i,\,\delta_i) \vec{v}_i / r_i$ where
+    $\transp{(\pmra,\,\pmdec)} = \mat{M}_i(\alpha_i,\,\delta_i) \, \vec{v}_i / r_i$ where
     $\mat{M}_i$ is the rotation matrix that transforms the equatorial
     rectangular coordinates to the tangential coordinates at the location
     $(\mathrm{R.A.},\,\mathrm{Decl.}) = (\alpha_i,\,\delta_i)$.
 
   \item We assume that the noise model for the \gaia\ data is Gaussian, and
     the covariance matrix $\mat{C_i}$ is given and fixed:
-    $$(\tilde\varpi_i,\,\tilde\mu_{\alpha,i}^*,\,\tilde\mu_{\delta,i}) \sim
-      \normal((\varpi_i,\,\mu_{\alpha,i}^*,\,\mu_{\delta,i}),\,\mat{C_i})$$
+    \begin{equation}
+    (\tilde\varpi_i,\,\tilde\mu_{\alpha,i}^*,\,\tilde\mu_{\delta,i}) \sim
+      \normal((\varpi_i,\,\mu_{\alpha,i}^*,\,\mu_{\delta,i}),\,\mat{C_i})
+    \end{equation}
 
   \item \emph{Priors}:
     We assume an uninformative uniform prior in distance and a broad Gaussian
@@ -500,21 +500,19 @@ In this case, the radial velocity is just $v_{r,i} =
 where $\hat{\vec{u}}_r(\alpha_i,\,\delta_i)$ is the unit radial vector
 and the covariance of the noise model
 is extended as $\mathrm{diag}(\mat{C_i},\,\sigma_{v_r}^2)$.
-We refer the model using proper-motions only of all candidate member stars as `PM only'
+We refer to the model using proper-motions only of all candidate member stars as `PM only'
 and the model using a subset of 38 stars with RVs as `PM+RV' respectively.
-For each case, we first do an optimization using L-BFGS algorithm starting from
+For each case, we first optimize the likelihood of each model using the L-BFGS \todo{citation for LBFGS} algorithm starting from
 the initial values $d_{i,0} = 1/{\tilde \varpi_i}$, a random mean velocity
 $\vec{u}_0$ and $\sigma_u=10$~\kms.
-We then sample the posterior distribution of $d_i$, $\vec{u}$ and $\sigma_u$
+We then sample the posterior distribution of $d_i$, $\vec{u}$, and $\sigma_u$
 starting from this optimum.
 
-This fitting achieves two main goals.
+This modeling procedure achieves two main goals.
 First, it properly deconvolves the uncertainty of each measurements taking
 covariances between parallax and proper motions into account.
-Secondly, for `PM only' case, this derives the geometric (astrometric) velocity
-of the group, which can be compared to the spectroscopic RVs from \gaia\ DR 2
-for a subset of stars.
-This may be particularly interesting as \groupTen\ has a large angular span
+Secondly, for the `PM only' case, this derives the geometric (astrometric) velocity of the group, which can be compared to the spectroscopic RVs from \gaia\ DR 2, available for a subset of stars.
+This is particularly interesting as \groupTen\ has a large angular span
 ($(\Delta\mathrm{R.A.},\,\Delta\mathrm{Decl.})\approx(39,\,18)$~deg)
 and the astrometric precision is generally excellent.
 
@@ -531,19 +529,19 @@ and the astrometric precision is generally excellent.
   \label{fig:fit}
 \end{figure}
 
-\figname~\ref{fig:fit} summarizes and compares the fit result for the two cases.
+\figname~\ref{fig:fit} summarizes and compares the result of the modeling procedure described above for the two cases.
 Because this group spans a large area on sky, all three components of the mean
-velocity is well-contrained geometrically using proper-motions only
+velocity are well-constrained geometrically even when only using proper-motions
 (black density and contours).
 The mean and standard deviation of the posterior samples of the mean velocity $\vec{u}$
 is $(u_x,\,u_y,\,u_z) = (-3.82\pm0.19,\,6.84\pm0.14,\,-4.00\pm0.34)$ in
 equatorial coordinates.
 The velocity dispersion is very small with the mean of the posterior samples at
 $\approx 0.73$~\kms.
-The fit result of `PM only' is in good agreement with `PM+RV' case
+The fit result of `PM only' is in good agreement with the `PM+RV' case
 with the mean velocity of $(-3.02\pm0.13,\,7.41\pm0.14,\,-5.89\pm0.13)$ and
 the mean dispersion of $0.82$~\kms (orange density and contours).
-While the differences between the two models is significant formally,
+While the differences between the two models is formally significant,
 the difference is very small $<1$~\kms.
 
 \subsection{Morphology}
